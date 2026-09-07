@@ -24,3 +24,7 @@ Replace the repository contents with this version, commit to `main`, and let Ver
 - Responsive spacing and typography refined for mobile and desktop.
 
 No Neon migration is required for v12.
+
+## v12.1 patch
+- Social media metrics are forced into a true 3-column row: Followers, Engagement Rate, Average Views.
+- Creator Pro pastel social cards now use consistent dark text for proper contrast.
