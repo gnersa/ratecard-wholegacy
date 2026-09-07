@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="nav">
       <div className="container navInner">
-        <Link href="/" className="brand">Wholegacy<span>.</span> Ratecard</Link>
+        <Link href="/" className="brand brandImageLink"><img src="/brand-logo.png" alt="RWL Rate Card" className="navBrandLogo" /></Link>
         <div className="navLinks">
           <a href="#features">Features</a>
           <a href="#how">How it works</a>
