@@ -7,3 +7,7 @@ Run `neon-v11-migration.sql` once in Neon SQL Editor. Vercel Blob remains prefer
 
 ## Deployment
 Replace the repository contents with this version, commit to `main`, and let Vercel redeploy.
+
+
+## v11.1 hotfix
+- Fixed TypeScript build error in `src/app/api/media/[id]/route.ts` by returning an exact `ArrayBuffer` body from the Neon media fallback route.
