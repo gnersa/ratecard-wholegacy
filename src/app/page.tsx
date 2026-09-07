@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import SupportLink from "@/components/SupportLink";
 
 const features = [
   ["01", "One link, everything", "Bring your rate card, portfolio, social profiles, audience highlights, and business contact into a single creator page."],
@@ -76,7 +77,7 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div className="container">© 2026 Wholegacy. Creator tools for the modern collaboration economy.</div>
+        <div className="container landingFooterInner"><span>© 2026 Wholegacy. Creator tools for the modern collaboration economy.</span><SupportLink /></div>
       </footer>
     </main>
   );

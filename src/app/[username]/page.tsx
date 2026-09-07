@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { sql } from "@/lib/db";
 import RatecardTemplates from "@/components/ratecard-templates";
+import PrintDownloadButton from "@/components/PrintDownloadButton";
 
 async function getCreator(username: string) {
   const profiles = await sql`select * from creator_profiles where lower(username) = ${username.toLowerCase()} and published = true limit 1`;
@@ -33,5 +34,5 @@ export async function generateMetadata({ params }: { params: Promise<{ username:
 export default async function CreatorPage({ params }: { params: Promise<{ username: string }> }) {
   const { username } = await params; const data = await getCreator(username); if(!data) notFound();
   const p:any=data.profile;
-  return <main className="publicV3"><div className="publicV3Shell"><RatecardTemplates profile={p} socials={data.socials} rates={data.rates} experiences={data.experiences} terms={data.terms} theme={p.theme}/><div className="publicV3Contact"><small>Created with <a href="/">Wholegacy Ratecard</a></small></div></div></main>;
+  return <main className="publicV3"><div className="publicV3Shell"><div className="publicRateActions"><PrintDownloadButton /></div><RatecardTemplates profile={p} socials={data.socials} rates={data.rates} experiences={data.experiences} terms={data.terms} theme={p.theme}/><div className="publicV3Contact"><small>Created with <a href="/">Wholegacy Ratecard</a></small></div></div></main>;
 }
