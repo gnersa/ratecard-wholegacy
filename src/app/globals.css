@@ -705,3 +705,46 @@ html,body,.dashboard,.sidebar,.dashMain,.cmsEditor,.editorCard,.templateCmsCard,
   .v7PublicLink{margin-top:4mm!important;padding-top:2mm!important}.v7PublicLink a{font-size:6.5pt!important}
   .v7Section,.v7Social,.v7RateWrap,.v7LowerGrid,.v7CreatorBottom,.v7ListBlock{break-inside:avoid-page!important;page-break-inside:avoid!important}
 }
+
+/* ===== v14: wider social metrics, Creator Pro contact contrast, homepage i18n/FAQ/reviews ===== */
+/* Wider social account cards give all three metric panels equal horizontal space. */
+.v7Socials-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{min-width:0!important;padding-left:10px!important;padding-right:10px!important}
+.v7Stat b{white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;font-size:clamp(15px,1.45vw,20px)!important}
+.v7Stat span{white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;font-size:8px!important;letter-spacing:.025em!important}
+
+/* Creator Pro contact tiles stay legible on screen and in exported PDF. */
+.tplCreator7 .v7Contact{background:#0b0e0c!important;border-color:#242b26!important;color:#fff!important}
+.tplCreator7 .v7Contact small{color:#aeb8b1!important;opacity:1!important}
+.tplCreator7 .v7Contact strong,.tplCreator7 .v7Contact span,.tplCreator7 .v7Contact a{color:#fff!important}
+.tplCreator7 .v7ContactMark{background:#050706!important;border-color:#313a33!important;color:#fff!important}
+
+.landingLang{height:36px;min-width:44px;padding:0 11px;border-radius:999px;border:1px solid #303030;background:#111;color:#f4f4ef;font-weight:800;cursor:pointer}
+.landingLang:hover{border-color:var(--accent);color:var(--accent)}
+.reviewSection{padding:72px 0 84px;overflow:hidden;border-block:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,#090909,#0c0d0b)}
+.reviewHeader{margin-bottom:26px}
+.reviewMarquee{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.reviewTrack{display:flex;gap:16px;width:max-content;padding:6px 0;animation:reviewFlow 70s linear infinite;will-change:transform}
+.reviewTrack:hover{animation-play-state:paused}
+.reviewCard{width:390px;min-height:126px;display:grid;grid-template-columns:82px 1fr;gap:16px;align-items:center;border:1px solid #79ff20;border-radius:20px;padding:16px 18px;background:#0e120f;box-shadow:inset 0 0 0 1px rgba(121,255,32,.08),0 0 24px rgba(121,255,32,.035)}
+.reviewCard img{width:82px;height:82px;border-radius:16px;object-fit:cover;display:block;background:#1b1b1b}
+.reviewCard strong{display:block;color:#fff;font-size:15px;margin:0 0 7px}
+.reviewCard p{margin:0;color:#b9c0ba;font-size:12.5px;line-height:1.55}
+@keyframes reviewFlow{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 8px))}}
+.faqGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.faqItem{border:1px solid var(--line);border-radius:18px;background:#101110;padding:0 18px;overflow:hidden}
+.faqItem summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;padding:18px 0;color:#f5f6f2;font-weight:750;font-size:15px}
+.faqItem summary::-webkit-details-marker{display:none}.faqItem summary span{color:var(--accent);font-size:22px;font-weight:400;transition:.2s}.faqItem[open] summary span{transform:rotate(45deg)}
+.faqItem p{margin:0;padding:0 0 18px;color:var(--muted);font-size:13px;line-height:1.65}
+
+@media(max-width:900px){.v7Socials-cards{grid-template-columns:1fr!important}.faqGrid{grid-template-columns:1fr}.reviewCard{width:340px}.navLinks{gap:10px}.navLinks a:not(.button),.navLinks>a[href="#faq"]{display:none}}
+@media(max-width:680px){.v7Stat span{font-size:7.2px!important}.reviewSection{padding:54px 0 62px}.reviewCard{width:300px;grid-template-columns:66px 1fr;gap:13px;padding:13px 14px;border-radius:17px}.reviewCard img{width:66px;height:66px;border-radius:13px}.reviewCard strong{font-size:14px}.reviewCard p{font-size:11.5px;line-height:1.5}.reviewTrack{gap:12px}.landingLang{height:34px}.navLinks .button{padding:0 12px;font-size:12px}}
+@media(max-width:430px){.v7Stat b{font-size:12.5px!important}.v7Stat span{font-size:6.2px!important;letter-spacing:0!important}.v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{padding-left:3px!important;padding-right:3px!important}.reviewCard{width:280px}}
+@media(prefers-reduced-motion:reduce){.reviewTrack{animation:none;transform:none}}
+@media print{
+  .tplCreator7 .v7Contact{background:#0b0e0c!important;color:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .tplCreator7 .v7Contact small,.tplCreator7 .v7Contact strong{color:#fff!important}
+  .v7Socials-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .v7Stat span{white-space:nowrap!important;font-size:5.5pt!important}
+  .v7Stat b{white-space:nowrap!important;font-size:9.5pt!important}
+}

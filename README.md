@@ -1,10 +1,16 @@
-# Wholegacy Ratecard v13
+# Wholegacy Ratecard v14
 
-Changes:
-- Social metrics use three equal rounded statistic panels in a strict 3x1 grid.
-- CMS navigation uses browser localStorage draft cache only. Moving between menus/Prev/Next no longer writes to Neon.
-- Preview and Publish show Saving/Menyimpan, then persist the complete draft to Neon and open the resulting rate card in a new tab.
-- Uploaded image URLs remain in the browser draft until Preview/Publish saves the profile.
-- Print/PDF CSS now requests A4 portrait with controlled A4 margins and a compact print layout.
+Next.js + Neon rate card generator for `ratecard.wholegacy.com`.
 
-No Neon migration is required.
+## v14 changes
+- Creator Pro contact contrast fixed for screen and PDF.
+- Social metric panels are wider while remaining a strict 3x1 grid.
+- Homepage bilingual Indonesia/English switch.
+- Homepage FAQ with FAQPage structured data.
+- SEO/GEO metadata, `robots.ts`, dynamic `sitemap.ts`, and `llms.txt`.
+- Six slow right-to-left creator review cards using the supplied portraits.
+
+## Deployment
+Replace the existing GitHub repository contents with this project and push to `main`. Vercel will redeploy automatically.
+
+No Neon migration is required for v14.
