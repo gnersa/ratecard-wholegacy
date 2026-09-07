@@ -1,68 +1,54 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { sql } from "@/lib/db";
 
-const demoProfile = {
-  name: "Maira Putri",
-  username: "maira",
-  bio: "Beauty and lifestyle creator based in Jakarta. Available for social campaigns, product storytelling, and brand collaborations.",
-  rates: [
-    ["Instagram Story", "Rp500.000"],
-    ["Instagram Feed Post", "Rp1.500.000"],
-    ["Instagram Reels", "Rp2.500.000"],
-    ["TikTok Video", "Rp3.000.000"],
-  ],
-};
-
-type Props = { params: Promise<{ username: string }> };
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { username } = await params;
-  const displayName = username.toLowerCase() === demoProfile.username ? demoProfile.name : username;
-  return {
-    title: `${displayName} Rate Card & Portfolio`,
-    description: `View ${displayName}'s creator rate card, portfolio, social media collaboration services, and business information on Wholegacy Ratecard.`,
-    alternates: { canonical: `/${username}` },
-  };
+function formatNumber(n: number) {
+  return new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(n || 0);
+}
+function formatPrice(value: number, currency: string) {
+  try { return new Intl.NumberFormat("id-ID", { style: "currency", currency: currency || "IDR", maximumFractionDigits: 0 }).format(value || 0); }
+  catch { return `${currency || "IDR"} ${Number(value || 0).toLocaleString("id-ID")}`; }
+}
+async function getCreator(username: string) {
+  const profiles = await sql`select * from creator_profiles where lower(username) = ${username.toLowerCase()} and published = true limit 1`;
+  if (!profiles.length) return null;
+  const p = profiles[0];
+  const socials = await sql`select * from social_accounts where user_id = ${p.user_id} order by position asc, created_at asc`;
+  const rates = await sql`select * from rate_items where user_id = ${p.user_id} order by position asc, created_at asc`;
+  return { profile: p, socials, rates };
 }
 
-export default async function CreatorPage({ params }: Props) {
+export async function generateMetadata({ params }: { params: Promise<{ username: string }> }): Promise<Metadata> {
   const { username } = await params;
-  const isDemo = username.toLowerCase() === demoProfile.username;
-  const profile = isDemo ? demoProfile : { ...demoProfile, name: username.replace(/[-_]/g, " "), username };
+  const data = await getCreator(username);
+  if (!data) return { title: "Creator not found | Wholegacy Ratecard" };
+  const p = data.profile;
+  const title = `${p.display_name} Rate Card & Portfolio | Wholegacy`;
+  const description = `View ${p.display_name}'s creator rate card, social media profile and collaboration rates${p.category ? ` for ${p.category}` : ""}.`;
+  const url = `https://ratecard.wholegacy.com/${p.username}`;
+  return { title, description, alternates: { canonical: url }, openGraph: { title, description, url, type: "profile", images: p.cover_url ? [p.cover_url] : undefined } };
+}
 
-  return (
-    <main className="profilePage">
-      <div className="profileShell">
-        <div className="profileHero">
-          <div className="profileBanner" />
-          <div className="profileContent">
-            <div className="eyebrow"><span className="dot" /> Wholegacy Creator</div>
-            <h1 className="profileName" style={{marginTop:16}}>{profile.name}</h1>
-            <div className="chips"><span className="chip">Beauty</span><span className="chip">Lifestyle</span><span className="chip">Jakarta</span></div>
-            <p style={{color:'#aaa', lineHeight:1.7}}>{profile.bio}</p>
-          </div>
+export default async function CreatorPage({ params }: { params: Promise<{ username: string }> }) {
+  const { username } = await params;
+  const data = await getCreator(username);
+  if (!data) notFound();
+  const { profile: p, socials, rates } = data;
+  const theme = ["minimal", "creator", "dark-pro"].includes(p.theme) ? p.theme : "minimal";
+  return <main className={`publicCreator theme-${theme}`}>
+    <div className="publicShell">
+      <header className="creatorHeader">
+        {p.cover_url ? <img className="creatorCover" src={p.cover_url} alt={`${p.display_name} cover`} /> : <div className="creatorCover placeholder" />}
+        <div className="creatorIdentity">
+          {p.avatar_url ? <img className="creatorAvatar" src={p.avatar_url} alt={p.display_name} /> : <div className="creatorAvatar avatarFallback">{String(p.display_name || "C")[0]}</div>}
+          <div><div className="creatorKicker">WHOLEGACY RATECARD</div><h1>{p.display_name}</h1><p>{[p.category,p.location].filter(Boolean).join(" • ")}</p></div>
         </div>
-
-        <section className="profileSection">
-          <h2>Audience</h2>
-          <div className="stats" style={{padding:0}}>
-            <div className="stat"><strong>128K</strong><span>Instagram</span></div>
-            <div className="stat"><strong>342K</strong><span>TikTok</span></div>
-            <div className="stat"><strong>4.8%</strong><span>Engagement</span></div>
-          </div>
-        </section>
-
-        <section className="profileSection">
-          <h2>Collaboration rates</h2>
-          <div className="rateList" style={{margin:0}}>
-            {profile.rates.map(([service, price]) => <div className="rateRow" key={service}><span>{service}</span><strong>{price}</strong></div>)}
-          </div>
-        </section>
-
-        <section className="profileSection">
-          <h2>Portfolio</h2>
-          <p style={{color:'#888', lineHeight:1.6}}>Portfolio gallery placeholder. This section will later load creator uploads from storage/database.</p>
-        </section>
-      </div>
-    </main>
-  );
+        {p.bio && <p className="creatorBio">{p.bio}</p>}
+      </header>
+      {socials.length > 0 && <section className="publicSection"><div className="sectionLabel">Social reach</div><div className="socialStatGrid">{socials.map((s:any)=><div className="socialStat" key={s.id}><span>{s.platform}</span><strong>{formatNumber(Number(s.followers))}</strong><small>{s.handle || "followers"}</small></div>)}</div></section>}
+      <section className="publicSection"><div className="sectionLabel">Collaboration rates</div><div className="publicRates">{rates.map((r:any)=><article className="publicRate" key={r.id}><div><span>{r.platform}</span><h2>{r.service_name}</h2>{r.description && <p>{r.description}</p>}</div><strong>{formatPrice(Number(r.price), r.currency)}</strong></article>)}</div></section>
+      {(p.contact_email || p.whatsapp) && <section className="publicContact"><div><span>Ready to collaborate?</span><h2>Work with {p.display_name}</h2></div><div className="contactActions">{p.contact_email && <a className="button primary" href={`mailto:${p.contact_email}`}>Email Creator</a>}{p.whatsapp && <a className="button secondary" href={`https://wa.me/${String(p.whatsapp).replace(/\D/g,"")}`} target="_blank">WhatsApp</a>}</div></section>}
+      <footer className="publicFooter">Created with <a href="/">Wholegacy Ratecard</a></footer>
+    </div>
+  </main>;
 }

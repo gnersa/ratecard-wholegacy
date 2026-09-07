@@ -1,26 +1,14 @@
-import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { sql } from "@/lib/db";
+import DashboardClient from "@/components/DashboardClient";
 
-export const metadata = { title: "Dashboard" };
-
-export default function DashboardPage() {
-  return (
-    <main className="dashboard">
-      <div className="container dashboardGrid">
-        <aside className="sidebar">
-          <Link href="/" className="brand">W<span>.</span> Ratecard</Link>
-          <p style={{color:'#777', fontSize:12}}>Creator workspace</p>
-          <a href="#">Overview</a><a href="#">Profile</a><a href="#">Social accounts</a><a href="#">Portfolio</a><a href="#">Rates</a><a href="#">Settings</a>
-        </aside>
-        <section className="dashMain">
-          <h1>Creator dashboard</h1>
-          <p style={{color:'#999'}}>Starter dashboard prepared for database and authentication integration.</p>
-          <div className="dashCards">
-            <div className="dashCard"><span>Profile status</span><strong>Draft</strong></div>
-            <div className="dashCard"><span>Rate services</span><strong>0</strong></div>
-            <div className="dashCard"><span>Portfolio items</span><strong>0</strong></div>
-          </div>
-        </section>
-      </div>
-    </main>
-  );
+export default async function DashboardPage() {
+  const user = await getCurrentUser();
+  if (!user) redirect("/login");
+  const profiles = await sql`select * from creator_profiles where user_id = ${user.id} limit 1`;
+  if (!profiles.length) redirect("/onboarding");
+  const socials = await sql`select * from social_accounts where user_id = ${user.id} order by position asc, created_at asc`;
+  const rates = await sql`select * from rate_items where user_id = ${user.id} order by position asc, created_at asc`;
+  return <DashboardClient user={user} profile={profiles[0]} initialSocials={socials} initialRates={rates} />;
 }

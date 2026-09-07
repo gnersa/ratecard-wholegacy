@@ -1,79 +1,48 @@
-# Wholegacy Ratecard
+# Wholegacy Ratecard v2
 
-Starter Next.js project for **ratecard.wholegacy.com**, a creator media kit, portfolio, and social media rate-card platform.
+Next.js + Neon PostgreSQL starter untuk `ratecard.wholegacy.com`.
 
-## Included in this starter
+## Yang sudah bekerja
+- Register email + password
+- Login + session cookie HTTP-only
+- Logout
+- Onboarding creator
+- Cek username unik
+- CMS profile
+- Social media stats
+- Rate card items
+- 3 theme: Minimal, Creator, Dark Pro
+- Publish / unlisted draft logic
+- Public URL `/username`
+- Dynamic metadata + canonical
 
-- Responsive dark landing page
-- `/login` UI
-- `/register` UI
-- `/dashboard` starter CMS UI
-- Dynamic creator route: `/[username]`
-- Example creator page: `/maira`
-- Dynamic creator metadata/title/description
-- Canonical URL support
-- Ready for GitHub + Vercel deployment
+## Setup TANPA project lokal
 
-> Authentication, database, uploads, Google login, and email verification are intentionally not connected yet. The recommended next phase is Supabase/PostgreSQL + Supabase Auth or Auth.js.
+### 1. Neon SQL
+Buka Neon > SQL Editor, paste seluruh isi `neon-schema.sql`, lalu Run.
 
-## Run locally
+### 2. Vercel Environment Variables
+Neon integration biasanya sudah membuat `DATABASE_URL`.
+Tambahkan manual:
 
-```bash
-npm install
-npm run dev
-```
+`AUTH_SECRET` = string acak panjang minimal 32 karakter.
 
-Open http://localhost:3000
+`NEXT_PUBLIC_SITE_URL` = `https://ratecard.wholegacy.com`
 
-## Environment
+Environment: Production + Preview.
 
-Copy `.env.example` to `.env.local`:
+### 3. Upload ke GitHub
+Upload/replace file repository dengan isi folder project ini, commit ke `main`.
+Vercel akan redeploy otomatis.
 
-```bash
-cp .env.example .env.local
-```
+### 4. Test
+- `/register`
+- selesai register -> `/onboarding`
+- isi username -> `/dashboard`
+- tambahkan minimal satu rate
+- pilih design
+- Publish
+- buka `/{username}`
 
-For production:
-
-```env
-NEXT_PUBLIC_SITE_URL=https://ratecard.wholegacy.com
-```
-
-## Push to GitHub
-
-Create an empty GitHub repository named `ratecard-wholegacy`, then run:
-
-```bash
-git init
-git add .
-git commit -m "Initial Wholegacy Ratecard starter"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/ratecard-wholegacy.git
-git push -u origin main
-```
-
-## Deploy to Vercel
-
-1. Sign in to Vercel.
-2. Add New → Project.
-3. Import `ratecard-wholegacy` from GitHub.
-4. Vercel should detect Next.js automatically.
-5. Add environment variable `NEXT_PUBLIC_SITE_URL=https://ratecard.wholegacy.com`.
-6. Deploy.
-7. In Project → Settings → Domains, add `ratecard.wholegacy.com`.
-8. Add the DNS record shown by Vercel to Hostinger DNS Zone Editor.
-
-## Recommended next development phase
-
-1. PostgreSQL/Supabase database
-2. Email/password auth
-3. Google login
-4. Email verification
-5. Reserved + unique usernames
-6. Creator profile editor
-7. Social account editor
-8. Rate-card CRUD
-9. Portfolio upload/storage
-10. Publish/unpublish controls
-11. Dynamic sitemap and structured data
-12. Analytics and brand inquiry
+## Catatan v2
+Untuk keamanan dan deployment sederhana, v2 ini memakai auth credential sendiri dengan password bcrypt + JWT cookie. Email verification, Google OAuth, dan upload file langsung belum diaktifkan. Field avatar/cover menerima URL gambar untuk sementara. Fitur itu ideal ditambahkan setelah core flow di atas berhasil diuji.
