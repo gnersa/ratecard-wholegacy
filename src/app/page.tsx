@@ -26,8 +26,8 @@ export default function Home() {
           </div>
 
           <div className="creatorMock" aria-label="Example creator rate card preview">
-            <div className="mockCover" />
-            <div className="mockAvatar" />
+            <img className="mockCover" src="/maira-cover.png" alt="Maira Putri cover" />
+            <img className="mockAvatar" src="/maira-profile.png" alt="Maira Putri" />
             <div className="mockHead">
               <h3>Maira Putri</h3>
               <p>Beauty · Lifestyle · Jakarta<br />Creating warm, high-converting lifestyle content.</p>

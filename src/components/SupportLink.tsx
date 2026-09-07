@@ -7,9 +7,9 @@ export default function SupportLink({ compact = false }: { compact?: boolean }) 
       href={DANA_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Buy me a cigarette on DANA"
+      aria-label="Bantu biaya hosting dan server melalui DANA"
     >
-      <span>buy me a cigarette on</span>
+      <span>Bantu biaya hosting &amp; server</span>
       <img src="/dana-logo.png" alt="DANA" />
     </a>
   );
