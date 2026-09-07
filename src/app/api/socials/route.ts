@@ -18,8 +18,12 @@ export async function PUT(request: Request) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
     if (!item.platform) continue;
-    await sql`insert into social_accounts (user_id, platform, handle, url, followers, average_views, engagement_rate, position)
-      values (${user.id}, ${String(item.platform)}, ${String(item.handle || "")}, ${String(item.url || "")}, ${Number(item.followers || 0)}, ${Number(item.averageViews || 0)}, ${Number(item.engagementRate || 0)}, ${i})`;
+    const min = Number(item.averageViewsMin || 0);
+    const max = Number(item.averageViewsMax || 0);
+    const legacyAverage = min && max ? Math.round((min + max) / 2) : Number(item.averageViews || max || min || 0);
+    await sql`insert into social_accounts
+      (user_id, platform, handle, url, followers, average_views, average_views_min, average_views_max, engagement_rate, content_style, position)
+      values (${user.id}, ${String(item.platform)}, ${String(item.handle || "")}, ${String(item.url || "")}, ${Number(item.followers || 0)}, ${legacyAverage}, ${min}, ${max}, ${Number(item.engagementRate || 0)}, ${String(item.contentStyle || "")}, ${i})`;
   }
   return NextResponse.json({ ok: true });
 }

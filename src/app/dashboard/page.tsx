@@ -10,5 +10,7 @@ export default async function DashboardPage() {
   if (!profiles.length) redirect("/onboarding");
   const socials = await sql`select * from social_accounts where user_id = ${user.id} order by position asc, created_at asc`;
   const rates = await sql`select * from rate_items where user_id = ${user.id} order by position asc, created_at asc`;
-  return <DashboardClient user={user} profile={profiles[0]} initialSocials={socials} initialRates={rates} />;
+  const experiences = await sql`select * from collaboration_experiences where user_id = ${user.id} order by position asc, created_at asc`;
+  const terms = await sql`select * from terms_conditions where user_id = ${user.id} order by position asc, created_at asc`;
+  return <DashboardClient user={user} profile={profiles[0]} initialSocials={socials} initialRates={rates} initialExperiences={experiences} initialTerms={terms} />;
 }

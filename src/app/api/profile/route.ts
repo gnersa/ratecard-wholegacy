@@ -23,7 +23,7 @@ export async function PUT(request: Request) {
     const duplicate = await sql`select user_id from creator_profiles where lower(username) = ${username} and user_id <> ${user.id} limit 1`;
     if (duplicate.length) return NextResponse.json({ error: "Username sudah digunakan." }, { status: 409 });
 
-    const theme = ["minimal", "creator", "dark-pro"].includes(body.theme) ? body.theme : "minimal";
+    const theme = ["minimal", "creator", "dark-pro", "editorial"].includes(body.theme) ? body.theme : "minimal";
     const rows = await sql`
       insert into creator_profiles
         (user_id, username, display_name, bio, category, location, avatar_url, cover_url, contact_email, whatsapp, theme, updated_at)
