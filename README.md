@@ -1,21 +1,13 @@
-# Wholegacy Ratecard v6
+# Wholegacy Ratecard v7
 
-Upgrade dari v5 dengan arsitektur informasi yang konsisten untuk semua template.
+V7 redesigns all four public templates to closely follow the supplied mockup direction while keeping the same minimum information in every theme.
 
-## Perubahan utama
-- Semua template menampilkan minimum information yang sama: profil creator, semua akun social media + followers/engagement/view range/content style, rate kerja sama, Contact Me, pengalaman kolaborasi, serta syarat & ketentuan.
-- Empat struktur template tetap berbeda tetapi semuanya minimalis, informatif, responsive, dan web/mobile friendly.
-- `editorial` kini tampil sebagai **Modern**, menggantikan gaya beige lama dengan layout netral modern.
-- `creator` kini tampil sebagai **Creator Pro**.
-- Contact Me memiliki direct `mailto:` dan `https://wa.me/...` link.
-- CMS/editor menggunakan font stack `Roboto, Arial, Helvetica, sans-serif` tanpa ketergantungan font eksternal.
-- Tidak membutuhkan migration database baru dari v5.
+Themes:
+- Modern: fresh cover-led profile with pastel social statistic cards.
+- Minimalist: clean, elegant hero and information rows.
+- Creator Pro: bold collage/editorial layout with colorful social cards.
+- Dark Pro: premium dark hero with compact professional information blocks.
 
-## Template
-- Modern (`editorial`)
-- Minimal (`minimal`)
-- Creator Pro (`creator`)
-- Dark Pro (`dark-pro`)
+All themes include creator identity, bio, social media metrics per platform, content style, collaboration rates, clickable email and WhatsApp contact, collaboration experience, terms & conditions, and creator URL.
 
-## Deploy
-Replace source repo dengan isi ZIP ini lalu commit ke `main`. Vercel akan auto deploy. Neon v5 schema/migration tetap digunakan.
+No Neon migration is required from v6.
