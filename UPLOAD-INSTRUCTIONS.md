@@ -1,7 +1,9 @@
-# Upload v14
+# Upload v15
 
-1. Extract the ZIP.
-2. Upload the contents of the `ratecard-wholegacy-v14` folder to the root of your GitHub repository.
-3. Replace old project files rather than nesting the v14 folder inside the repository.
-4. Commit to `main` and let Vercel redeploy.
+1. Extract this ZIP.
+2. Replace the repository contents while preserving the folder structure (`src/`, `public/`, etc.).
+3. Commit to `main`.
+4. Vercel will redeploy automatically.
 5. No Neon migration is required.
+
+Important: do not flatten files into the repository root. For example, `HomeClient.tsx` must remain under `src/components/`.
