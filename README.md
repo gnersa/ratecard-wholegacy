@@ -1,3 +1,12 @@
+# Wholegacy Ratecard v14.1
+
+Patch untuk landing page:
+- Section heading Feature, Reviews, dan FAQ dibuat center di atas deskripsi.
+- Running review cards diperbaiki menjadi seamless marquee kanan-ke-kiri yang looping.
+- Responsive spacing diperbaiki untuk desktop dan mobile.
+
+Tidak membutuhkan migration Neon baru.
+
 # Wholegacy Ratecard v14
 
 Next.js + Neon rate card generator for `ratecard.wholegacy.com`.
