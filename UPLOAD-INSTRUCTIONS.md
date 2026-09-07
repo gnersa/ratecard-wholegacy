@@ -1,6 +1,7 @@
-# Upload v12
-1. Run `neon-v12-migration.sql` once in Neon SQL Editor.
-2. Replace the repository files with the contents of this folder.
-3. Commit to `main`.
-4. Vercel will redeploy automatically.
-5. Optional but recommended: connect Vercel Blob. If it is unavailable, image upload automatically falls back to Neon media storage.
+# Upload v13
+
+1. Replace the repository root with the contents of this folder.
+2. Commit to `main`.
+3. Let Vercel deploy automatically.
+4. No Neon migration is needed.
+5. Test menu switching (should be instant), Preview/Publish (should show Saving/Menyimpan), and Print / Download PDF (A4 portrait).
