@@ -1,0 +1,9 @@
+# RWL Rate Card by Wholegacy
+
+RWL Rate Card is an online rate card and creator media kit generator at https://ratecard.wholegacy.com.
+
+Creators can publish a public profile with social media statistics, audience metrics, content style, collaboration rates, business contact links, collaboration experience, and terms & conditions.
+
+Supported use cases include Instagram, TikTok, YouTube, Facebook, X, influencer partnerships, sponsorships, endorsements, UGC, and creator-brand collaborations.
+
+Published creator pages use unique URLs such as https://ratecard.wholegacy.com/username and are intended to be readable by people, search engines, and AI systems.
