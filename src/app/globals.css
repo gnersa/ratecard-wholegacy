@@ -807,8 +807,8 @@ html,body,.dashboard,.sidebar,.dashMain,.cmsEditor,.editorCard,.templateCmsCard,
    because this strip is deliberately user-requested as a continuously running carousel. */
 @media(prefers-reduced-motion:reduce){.reviewTrack{animation:reviewFlowSeamless 60s linear infinite!important}}
 
-/* ===== v15: final visual-polish system for all four public templates ===== */
-/* One authoritative visual layer, intentionally placed last to neutralize legacy overrides. */
+/* ===== v16: normalized visual system for all four public rate-card themes ===== */
+/* This is the single final visual layer. It intentionally neutralizes older template overrides. */
 .previewPublicShell,.publicV3Shell{
   width:min(calc(100% - 32px),1160px)!important;
   max-width:1160px!important;
@@ -820,251 +820,232 @@ html,body,.dashboard,.sidebar,.dashMain,.cmsEditor,.editorCard,.templateCmsCard,
   width:100%!important;
   max-width:1160px!important;
   margin:0 auto!important;
-  padding:26px!important;
+  padding:24px!important;
   border-radius:18px!important;
-  font-size:13.5px!important;
+  font-size:13px!important;
   line-height:1.5!important;
   overflow:hidden!important;
 }
 .v7Template h1,.v7Template h2,.v7Template h3,.v7Template p{overflow-wrap:anywhere}
 .v7IdentityText h1{
-  font-size:clamp(27px,3vw,31px)!important;
+  font-size:29px!important;
   line-height:1.04!important;
-  letter-spacing:-.035em!important;
+  letter-spacing:-.03em!important;
   margin:0 0 5px!important;
 }
-.v7IdentityText p{font-size:14px!important;line-height:1.35!important}
-.v7Location{font-size:11.5px!important;line-height:1.35!important;margin-top:7px!important;gap:6px!important}
-.v7Bio{font-size:13px!important;line-height:1.58!important;color:var(--muted)!important;margin-bottom:0!important}
+.v7IdentityText p{font-size:13.5px!important;line-height:1.35!important;margin:0!important}
+.v7Location{font-size:11px!important;line-height:1.35!important;margin-top:7px!important;gap:6px!important}
+.v7Bio{font-size:13px!important;line-height:1.58!important;color:var(--muted)!important;margin-bottom:0!important;max-width:760px!important}
 .v7Section{margin-top:28px!important}
-.v7SectionTitle{gap:12px!important;margin-bottom:13px!important;min-width:0!important}
-.v7SectionTitle h2{
-  font-size:14px!important;
-  line-height:1.2!important;
-  letter-spacing:.045em!important;
-  white-space:nowrap!important;
-}
+.v7SectionTitle{gap:12px!important;margin-bottom:12px!important;min-width:0!important}
+.v7SectionTitle h2{font-size:14px!important;line-height:1.2!important;letter-spacing:.04em!important;white-space:nowrap!important}
 .v7SectionTitle span{min-width:24px!important}
 
-/* Hero / identity balance */
-.v7ModernHero,.v7MinimalHero,.v7DarkHero{height:220px!important;border-radius:13px!important}
-.v7ModernWords{padding:18px 20px!important;font-size:10px!important;letter-spacing:.11em!important}
-.v7ModernWords b{font-size:16px!important}
-.v7ModernProfile{margin:-50px 16px 0!important;gap:15px!important;align-items:flex-end!important}
-.v7ModernProfile .v7Avatar{width:104px!important;height:104px!important;border-width:5px!important}
-.modernBio{margin:13px 16px 0!important;max-width:760px!important}
-.v7MinimalIdentity{
-  grid-template-columns:minmax(280px,.95fr) minmax(0,1.05fr)!important;
-  gap:24px!important;
-  margin:-48px 16px 0!important;
-  align-items:end!important;
-}
-.v7MinimalIdentity .v7Bio{margin:24px 0 2px!important;align-self:end!important}
-.v7DarkIdentity{
-  grid-template-columns:minmax(290px,.95fr) minmax(0,1.05fr)!important;
-  gap:24px!important;
-  margin-top:-48px!important;
-  padding:0 14px!important;
-  align-items:end!important;
-}
-.v7DarkIdentity>.v7Bio{margin:24px 0 2px!important;align-self:end!important}
-.v7CreatorHero{height:270px!important}
-.v7CreatorPhoto{height:228px!important;width:54%!important;right:28px!important;top:18px!important;border-width:4px!important}
-.v7CreatorSlogan{left:20px!important;top:32px!important;font-size:24px!important;line-height:1.03!important}
-.v7Sticky{right:9px!important;top:10px!important;padding:10px 12px!important;font-size:9.5px!important}
-.v7CreatorProfile{margin-top:-32px!important;gap:14px!important;padding:0 3px!important}
-.v7CreatorProfile .v7Avatar{width:98px!important;height:98px!important;border-width:4px!important}
-.creatorBio7{margin:11px 3px 0!important;max-width:760px!important}
+/* Modern */
+.tplModern7 .v7ModernHero{height:200px!important;border-radius:12px!important}
+.tplModern7 .v7ModernWords{padding:16px 18px!important;font-size:9px!important;letter-spacing:.10em!important;opacity:.9}
+.tplModern7 .v7ModernWords b{font-size:14px!important}
+.tplModern7 .v7ModernProfile{margin:-46px 14px 0!important;gap:14px!important;align-items:flex-end!important}
+.tplModern7 .v7ModernProfile .v7Avatar{width:96px!important;height:96px!important;border-width:5px!important}
+.tplModern7 .modernBio{margin:12px 14px 0!important;max-width:760px!important}
 
-/* Stable social account grid */
-.v7Socials-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+/* Minimalist */
+.tplMinimal7 .v7MinimalHero{height:190px!important;border-radius:10px!important}
+.tplMinimal7 .v7MinimalIdentity{
+  grid-template-columns:minmax(260px,.92fr) minmax(0,1.08fr)!important;
+  gap:22px!important;
+  margin:-44px 14px 0!important;
+  align-items:end!important;
+}
+.tplMinimal7 .v7MinimalIdentity .v7Avatar{width:96px!important;height:96px!important;border-width:5px!important}
+.tplMinimal7 .v7MinimalIdentity .v7Bio{margin:16px 0 1px!important;max-width:720px!important;align-self:end!important}
+
+/* Dark Pro */
+.tplDark7 .v7DarkHero{height:200px!important;border-radius:12px!important}
+.tplDark7 .v7DarkOverlay{padding:18px!important}
+.tplDark7 .v7DarkOverlay span{font-size:9px!important;letter-spacing:.27em!important}
+.tplDark7 .v7DarkIdentity{
+  grid-template-columns:minmax(270px,.92fr) minmax(0,1.08fr)!important;
+  gap:22px!important;
+  margin-top:-44px!important;
+  padding:0 12px!important;
+  align-items:end!important;
+}
+.tplDark7 .v7DarkIdentity .v7Identity{padding-left:0!important}
+.tplDark7 .v7DarkIdentity .v7Avatar{width:96px!important;height:96px!important;border-width:5px!important}
+.tplDark7 .v7DarkIdentity>.v7Bio{margin:16px 0 1px!important;max-width:720px!important;align-self:end!important}
+
+/* Creator Pro: editorial hero, not poster-heavy */
+.tplCreator7 .v7CreatorHero{height:238px!important}
+.tplCreator7 .v7CreatorPhoto{height:198px!important;width:52%!important;right:24px!important;top:17px!important;border-width:4px!important}
+.tplCreator7 .v7CreatorSlogan{left:18px!important;top:28px!important;font-size:20px!important;line-height:1.04!important}
+.tplCreator7 .v7Sticky{right:8px!important;top:9px!important;padding:8px 10px!important;font-size:8.5px!important;line-height:1.15!important}
+.tplCreator7 .v7Tape{width:70px!important;height:15px!important}
+.tplCreator7 .v7CreatorProfile{margin-top:-30px!important;gap:13px!important;padding:0 4px!important}
+.tplCreator7 .v7CreatorProfile .v7Avatar{width:90px!important;height:90px!important;border-width:4px!important}
+.tplCreator7 .creatorBio7{margin:10px 4px 0!important;max-width:720px!important}
+
+/* Social account cards: exactly 2 across on desktop, 3 metrics in one row */
+.v7Socials-cards{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
 .v7Social:not(.rows),.v7Social.rows{
   min-width:0!important;
-  gap:10px!important;
-  padding:14px!important;
+  padding:13px!important;
   border-radius:12px!important;
+  gap:9px!important;
 }
-.v7Social:not(.rows){grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.v7Social:not(.rows){display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important}
 .v7Social:not(.rows) .v7SocialTop,.v7Social:not(.rows) .v7ContentStyle{grid-column:1/-1!important}
-.v7SocialTop{min-height:40px!important;gap:9px!important;padding-bottom:10px!important}
-.v7SocialLogo{width:36px!important;height:36px!important;border-radius:10px!important}
-.v7SocialTop strong{font-size:14px!important;line-height:1.15!important}
-.v7SocialTop small{font-size:10.5px!important;line-height:1.25!important;margin-top:2px!important}
+.v7SocialTop{min-height:38px!important;gap:9px!important;padding-bottom:9px!important}
+.v7SocialLogo{width:34px!important;height:34px!important;border-radius:9px!important}
+.v7SocialTop strong{font-size:13.5px!important;line-height:1.15!important}
+.v7SocialTop small{font-size:10px!important;line-height:1.25!important;margin-top:2px!important}
 .v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{
-  min-height:76px!important;
-  padding:9px 7px!important;
-  border-radius:11px!important;
+  min-width:0!important;
+  min-height:66px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:8px 6px!important;
+  border-radius:10px!important;
 }
-.v7Stat b,.v7Social.rows .v7Stat b{
-  font-size:17px!important;
-  line-height:1.08!important;
-  white-space:normal!important;
-  overflow-wrap:normal!important;
-  word-break:normal!important;
-}
-.v7Stat span{
-  font-size:9px!important;
-  line-height:1.22!important;
-  letter-spacing:.02em!important;
-  white-space:normal!important;
-  text-wrap:balance!important;
-  min-height:22px!important;
-}
-.v7ContentStyle{font-size:11.5px!important;line-height:1.45!important;padding-top:10px!important}
-/* Minimalist uses a calm row layout on larger screens. */
+.v7Stat b,.v7Social.rows .v7Stat b{font-size:16px!important;line-height:1.08!important;letter-spacing:-.015em!important;white-space:nowrap!important}
+.v7Stat span{font-size:9px!important;line-height:1.18!important;letter-spacing:.015em!important;text-transform:uppercase!important;margin-top:4px!important;min-height:0!important;text-wrap:balance!important}
+.v7ContentStyle{font-size:11px!important;line-height:1.45!important;padding-top:9px!important;margin:0!important}
+
+/* Minimalist keeps one calm social row per platform */
+.v7Socials-rows{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
 .v7Social.rows{
-  grid-template-columns:minmax(180px,1.18fr) repeat(3,minmax(105px,.68fr)) minmax(210px,1.3fr)!important;
-  align-items:stretch!important;
-  gap:10px!important;
-  padding:12px 14px!important;
+  display:grid!important;
+  grid-template-columns:minmax(180px,1.16fr) repeat(3,minmax(100px,.66fr)) minmax(210px,1.3fr)!important;
+  align-items:center!important;
+  gap:9px!important;
+  padding:11px 13px!important;
 }
 .v7Social.rows .v7SocialTop{padding-bottom:0!important;border-bottom:0!important}
-.v7Social.rows .v7Stat{min-height:66px!important}
+.v7Social.rows .v7Stat{min-height:60px!important}
 .v7Social.rows .v7ContentStyle{padding:0!important;border:0!important;align-self:center!important}
 
-/* Rates: clean desktop table, stacked cards on small screens */
+/* Creator Pro removes the nested-card heaviness from metric tiles. */
+.tplCreator7 .v7Social .v7Stat{background:rgba(255,255,255,.12)!important;border:1px solid rgba(20,24,22,.12)!important;box-shadow:none!important}
+
+/* Rates */
 .v7RateWrap{overflow:hidden!important;border-radius:12px!important}
 .v7RateTable{min-width:0!important;width:100%!important}
-.v7RateRow{grid-template-columns:130px 180px 150px minmax(240px,1fr)!important}
-.v7RateRow>*{padding:12px 13px!important;font-size:11.5px!important;line-height:1.42!important}
-.v7RateHead span{font-size:9.5px!important;letter-spacing:.045em!important}
+.v7RateRow{grid-template-columns:125px 175px 145px minmax(220px,1fr)!important}
+.v7RateRow>*{padding:11px 12px!important;font-size:11.5px!important;line-height:1.4!important}
+.v7RateHead span{font-size:9.5px!important;letter-spacing:.04em!important}
 .v7RatePriceCell{white-space:nowrap!important}
 
-/* Contacts / lower sections */
-.v7LowerGrid,.v7CreatorBottom{gap:20px!important;margin-top:26px!important}
-.v7Contacts{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
-.v7Contact{padding:11px 12px!important;border-radius:11px!important;min-height:58px!important}
-.v7ContactMark{width:32px!important;height:32px!important;border-radius:9px!important}
+/* Contact / experience / terms */
+.v7LowerGrid,.v7CreatorBottom{gap:18px!important;margin-top:24px!important;align-items:start!important}
+.v7Contacts{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+.v7Contact{padding:10px 11px!important;border-radius:10px!important;min-height:56px!important}
+.v7ContactMark{width:31px!important;height:31px!important;border-radius:8px!important}
 .v7Contact small{font-size:8.5px!important;line-height:1.2!important}
-.v7Contact strong{font-size:11.5px!important;line-height:1.32!important}
-.v7ListBlock{margin-top:24px!important}
-.v7ListBlock h3{font-size:13px!important;line-height:1.2!important;letter-spacing:.045em!important;margin-bottom:9px!important}
-.v7ListBlock li{font-size:11.5px!important;line-height:1.55!important}
-.v7PublicLink{margin-top:24px!important;padding-top:10px!important;text-align:right!important;opacity:.68!important}
-.v7PublicLink a{font-size:9.5px!important;letter-spacing:.015em!important;text-decoration:none!important}
+.v7Contact strong{font-size:11px!important;line-height:1.3!important}
+.v7ListBlock{margin-top:22px!important;padding-top:0!important;padding-bottom:0!important}
+.v7ListBlock h3{font-size:13px!important;line-height:1.2!important;letter-spacing:.04em!important;margin-bottom:8px!important}
+.v7ListBlock li{font-size:11.5px!important;line-height:1.52!important}
+.v7PublicLink{margin-top:22px!important;padding-top:9px!important;text-align:right!important;opacity:.56!important}
+.v7PublicLink a{font-size:9px!important;letter-spacing:.01em!important;text-decoration:none!important}
 
-/* Creator Pro must keep readable dark contacts even after all generic contact styles. */
+/* Creator Pro contacts must remain readable on the dark theme. */
 .tplCreator7 .v7Contact{background:#0b0e0c!important;border-color:#303732!important;color:#fff!important}
 .tplCreator7 .v7Contact small{color:#aeb8b1!important}
 .tplCreator7 .v7Contact strong{color:#fff!important}
 .tplCreator7 .v7ContactMark{background:#050706!important;color:#fff!important}
 
+/* Tablet */
 @media(max-width:920px){
   .previewPublicShell,.publicV3Shell{width:min(calc(100% - 24px),1160px)!important}
-  .rateTemplate.v7Template{padding:20px!important}
+  .rateTemplate.v7Template{padding:19px!important}
   .v7Socials-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  .v7Social.rows{grid-template-columns:minmax(160px,1fr) repeat(3,minmax(92px,.62fr)) minmax(180px,1.15fr)!important}
-  .v7RateRow{grid-template-columns:110px 155px 135px minmax(220px,1fr)!important}
+  .v7Social.rows{grid-template-columns:minmax(155px,1fr) repeat(3,minmax(86px,.62fr)) minmax(170px,1.12fr)!important}
+  .v7RateRow{grid-template-columns:105px 150px 130px minmax(200px,1fr)!important}
 }
 
+/* Mobile */
 @media(max-width:720px){
   .previewPublicShell,.publicV3Shell{width:calc(100% - 20px)!important}
   .publicV3{padding:14px 0 40px!important}
   .previewPage{padding:64px 0 20px!important}
-  .rateTemplate.v7Template{padding:14px!important;border-radius:14px!important}
+  .rateTemplate.v7Template{padding:13px!important;border-radius:14px!important}
   .v7Section{margin-top:20px!important}
   .v7SectionTitle{margin-bottom:10px!important;gap:9px!important}
-  .v7SectionTitle h2{font-size:12px!important;white-space:normal!important}
-  .v7Bio{font-size:12px!important;line-height:1.52!important}
+  .v7SectionTitle h2{font-size:12.5px!important;white-space:normal!important}
+  .v7Bio{font-size:12px!important;line-height:1.5!important}
   .v7IdentityText h1{font-size:23px!important}.v7IdentityText p{font-size:12.5px!important}.v7Location{font-size:10.5px!important}
 
-  .v7ModernHero,.v7MinimalHero,.v7DarkHero{height:170px!important}
-  .v7ModernWords{padding:12px 13px!important;font-size:8px!important}.v7ModernWords b{font-size:12px!important}
-  .v7ModernProfile{margin:-38px 6px 0!important;gap:10px!important}.v7ModernProfile .v7Avatar{width:78px!important;height:78px!important}
-  .modernBio{margin:10px 6px 0!important}
-  .v7MinimalIdentity,.v7DarkIdentity{display:block!important;margin:-36px 6px 0!important;padding:0!important}
-  .v7MinimalIdentity .v7Bio,.v7DarkIdentity>.v7Bio{margin:10px 0 0!important}
-  .v7CreatorHero{height:205px!important}.v7CreatorPhoto{height:168px!important;width:60%!important;right:8px!important;top:14px!important}
-  .v7CreatorSlogan{font-size:16px!important;left:9px!important;top:26px!important}.v7Sticky{font-size:7px!important;padding:6px 7px!important}
-  .v7CreatorProfile{margin-top:-24px!important}.v7CreatorProfile .v7Avatar{width:74px!important;height:74px!important}
+  .tplModern7 .v7ModernHero{height:158px!important}.tplMinimal7 .v7MinimalHero{height:150px!important}.tplDark7 .v7DarkHero{height:158px!important}
+  .tplModern7 .v7ModernWords{padding:11px 12px!important;font-size:7.5px!important}.tplModern7 .v7ModernWords b{font-size:11px!important}
+  .tplModern7 .v7ModernProfile{margin:-36px 5px 0!important;gap:10px!important}.tplModern7 .v7ModernProfile .v7Avatar{width:74px!important;height:74px!important}
+  .tplModern7 .modernBio{margin:9px 5px 0!important}
+  .tplMinimal7 .v7MinimalIdentity,.tplDark7 .v7DarkIdentity{display:block!important;margin:-34px 5px 0!important;padding:0!important}
+  .tplMinimal7 .v7MinimalIdentity .v7Avatar,.tplDark7 .v7DarkIdentity .v7Avatar{width:74px!important;height:74px!important}
+  .tplMinimal7 .v7MinimalIdentity .v7Bio,.tplDark7 .v7DarkIdentity>.v7Bio{margin:9px 0 0!important}
+  .tplCreator7 .v7CreatorHero{height:184px!important}.tplCreator7 .v7CreatorPhoto{height:150px!important;width:59%!important;right:7px!important;top:13px!important}
+  .tplCreator7 .v7CreatorSlogan{font-size:14px!important;left:8px!important;top:23px!important}.tplCreator7 .v7Sticky{font-size:6.5px!important;padding:5px 6px!important}
+  .tplCreator7 .v7CreatorProfile{margin-top:-22px!important}.tplCreator7 .v7CreatorProfile .v7Avatar{width:70px!important;height:70px!important}.tplCreator7 .creatorBio7{margin:8px 0 0!important}
 
   .v7Socials-cards{grid-template-columns:1fr!important;gap:9px!important}
-  .v7Social:not(.rows),.v7Social.rows{grid-template-columns:repeat(3,minmax(0,1fr))!important;padding:11px!important;gap:7px!important}
+  .v7Social:not(.rows),.v7Social.rows{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;padding:10px!important;gap:6px!important}
   .v7Social.rows .v7SocialTop,.v7Social.rows .v7ContentStyle{grid-column:1/-1!important}
-  .v7Social.rows .v7SocialTop{padding-bottom:9px!important;border-bottom:1px solid var(--line)!important}
-  .v7Social.rows .v7ContentStyle{padding-top:9px!important;border-top:1px solid var(--line)!important}
-  .v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{min-height:64px!important;padding:7px 4px!important;border-radius:9px!important}
+  .v7Social.rows .v7SocialTop{padding-bottom:8px!important;border-bottom:1px solid var(--line)!important}
+  .v7Social.rows .v7ContentStyle{padding-top:8px!important;border-top:1px solid var(--line)!important}
+  .v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{min-height:60px!important;padding:6px 3px!important;border-radius:8px!important}
   .v7Stat b,.v7Social.rows .v7Stat b{font-size:14.5px!important}
-  .v7Stat span{font-size:8px!important;min-height:19px!important;line-height:1.15!important}
-  .v7ContentStyle{font-size:10.5px!important;line-height:1.4!important}
+  .v7Stat span{font-size:9px!important;line-height:1.12!important;letter-spacing:0!important;text-transform:none!important}
+  .v7ContentStyle{font-size:10.5px!important;line-height:1.38!important}
 
   .v7RateWrap{border:0!important;background:transparent!important;overflow:visible!important}
-  .v7RateTable{display:grid!important;gap:9px!important}
+  .v7RateTable{display:grid!important;gap:8px!important}
   .v7RateHead{display:none!important}
-  .v7RateRow:not(.v7RateHead){
-    display:grid!important;
-    grid-template-columns:1fr 1fr!important;
-    gap:0!important;
-    border:1px solid var(--line)!important;
-    border-radius:11px!important;
-    overflow:hidden!important;
-    background:var(--panel)!important;
-  }
-  .v7RateRow:not(.v7RateHead)>*{
-    display:block!important;
-    border:0!important;
-    padding:10px 11px 9px!important;
-    font-size:11px!important;
-    line-height:1.38!important;
-    min-width:0!important;
-  }
-  .v7RateRow:not(.v7RateHead)>*::before{
-    content:attr(data-label)!important;
-    display:block!important;
-    margin-bottom:3px!important;
-    font-size:7.5px!important;
-    line-height:1.15!important;
-    text-transform:uppercase!important;
-    letter-spacing:.05em!important;
-    color:var(--muted)!important;
-    font-weight:700!important;
-  }
+  .v7RateRow:not(.v7RateHead){display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;border:1px solid var(--line)!important;border-radius:10px!important;overflow:hidden!important;background:var(--panel)!important}
+  .v7RateRow:not(.v7RateHead)>*{display:block!important;border:0!important;padding:9px 10px 8px!important;font-size:11px!important;line-height:1.36!important;min-width:0!important}
+  .v7RateRow:not(.v7RateHead)>*::before{content:attr(data-label)!important;display:block!important;margin-bottom:3px!important;font-size:8px!important;line-height:1.1!important;text-transform:uppercase!important;letter-spacing:.035em!important;color:var(--muted)!important;font-weight:700!important}
   .v7RateDescCell{grid-column:1/-1!important;border-top:1px solid var(--line)!important}
   .v7RateTypeCell,.v7RatePriceCell{border-top:1px solid var(--line)!important}
   .v7RatePriceCell{text-align:left!important}
 
-  .v7LowerGrid,.v7CreatorBottom{grid-template-columns:1fr!important;gap:12px!important;margin-top:20px!important}
-  .v7Contacts{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
-  .v7Contact{padding:9px!important;min-height:54px!important}.v7ContactMark{width:29px!important;height:29px!important}.v7Contact strong{font-size:10px!important}
-  .v7ListBlock{margin-top:18px!important}.v7ListBlock li{font-size:10.5px!important}
-  .v7PublicLink{margin-top:18px!important;padding-top:8px!important}.v7PublicLink a{font-size:8.5px!important}
+  .v7LowerGrid,.v7CreatorBottom{grid-template-columns:1fr!important;gap:11px!important;margin-top:19px!important}
+  .v7Contacts{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  .v7Contact{padding:8px!important;min-height:52px!important}.v7ContactMark{width:28px!important;height:28px!important}.v7Contact strong{font-size:10px!important}
+  .v7ListBlock{margin-top:17px!important}.v7ListBlock li{font-size:10.5px!important}
+  .v7PublicLink{margin-top:17px!important;padding-top:7px!important}.v7PublicLink a{font-size:8.5px!important}
 }
 
-@media(max-width:420px){
+/* Very narrow phones */
+@media(max-width:380px){
   .previewPublicShell,.publicV3Shell{width:calc(100% - 12px)!important}
-  .rateTemplate.v7Template{padding:11px!important;border-radius:12px!important}
-  .v7ModernHero,.v7MinimalHero,.v7DarkHero{height:148px!important}
-  .v7CreatorHero{height:184px!important}.v7CreatorPhoto{height:150px!important;width:62%!important}
-  .v7ModernProfile .v7Avatar,.v7CreatorProfile .v7Avatar,.v7Avatar{width:68px!important;height:68px!important}
-  .v7IdentityText h1{font-size:21px!important}.v7IdentityText p{font-size:11.5px!important}
-  .v7Social:not(.rows),.v7Social.rows{padding:9px!important;gap:5px!important}
-  .v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{min-height:59px!important;padding:6px 2px!important}
-  .v7Stat b,.v7Social.rows .v7Stat b{font-size:13px!important}
-  .v7Stat span{font-size:7.6px!important;letter-spacing:0!important}
+  .rateTemplate.v7Template{padding:10px!important;border-radius:11px!important}
   .v7Contacts{grid-template-columns:1fr!important}
+  .v7Stat b,.v7Social.rows .v7Stat b{font-size:13.5px!important}
+  .v7Stat span{font-size:9px!important}
 }
 
-/* One print system for A4. This block is last so older print overrides cannot win. */
+/* One A4 print system. */
 @media print{
   @page{size:A4 portrait;margin:8mm}
   html,body{width:210mm!important;min-width:210mm!important;margin:0!important;padding:0!important;background:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   .previewToolbar,.publicRateActions,.publicV3Contact,.supportDana,.cmsFooter,.footer,.navbar{display:none!important}
   .previewPage,.publicV3{width:210mm!important;min-width:210mm!important;margin:0!important;padding:0!important;background:#fff!important}
   .previewPublicShell,.publicV3Shell{width:194mm!important;max-width:194mm!important;margin:0 auto!important;padding:0!important}
-  .rateTemplate.v7Template{width:194mm!important;max-width:194mm!important;margin:0 auto!important;padding:5.5mm!important;border-radius:0!important;box-shadow:none!important;font-size:8pt!important;line-height:1.3!important;overflow:visible!important}
-  .v7ModernHero,.v7MinimalHero,.v7DarkHero{height:42mm!important;border-radius:2.5mm!important}
-  .v7CreatorHero{height:48mm!important}.v7CreatorPhoto{height:41mm!important;width:53%!important;right:5mm!important;top:3mm!important}.v7CreatorSlogan{font-size:15pt!important;left:4mm!important;top:7mm!important}
-  .v7ModernProfile,.v7MinimalIdentity,.v7DarkIdentity,.v7CreatorProfile{margin-top:-9mm!important}
-  .v7ModernProfile .v7Avatar,.v7CreatorProfile .v7Avatar,.v7Avatar{width:22mm!important;height:22mm!important}
-  .v7IdentityText h1{font-size:16pt!important}.v7IdentityText p{font-size:8pt!important}.v7Location{font-size:6.5pt!important}.v7Bio{font-size:7.2pt!important;line-height:1.35!important}
-  .v7Section{margin-top:4.5mm!important}.v7SectionTitle{margin-bottom:2.2mm!important}.v7SectionTitle h2{font-size:8pt!important}
-  .v7Socials-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:2mm!important}
-  .v7Social:not(.rows),.v7Social.rows{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1.6mm!important;padding:2mm!important;break-inside:avoid!important}
+  .rateTemplate.v7Template{width:194mm!important;max-width:194mm!important;margin:0 auto!important;padding:5mm!important;border-radius:0!important;box-shadow:none!important;font-size:8pt!important;line-height:1.3!important;overflow:visible!important}
+  .tplModern7 .v7ModernHero{height:38mm!important}.tplMinimal7 .v7MinimalHero{height:36mm!important}.tplDark7 .v7DarkHero{height:38mm!important}
+  .tplCreator7 .v7CreatorHero{height:43mm!important}.tplCreator7 .v7CreatorPhoto{height:36mm!important;width:51%!important;right:4.5mm!important;top:2.8mm!important}.tplCreator7 .v7CreatorSlogan{font-size:12pt!important;left:3.5mm!important;top:6mm!important}
+  .tplModern7 .v7ModernProfile,.tplMinimal7 .v7MinimalIdentity,.tplDark7 .v7DarkIdentity,.tplCreator7 .v7CreatorProfile{margin-top:-8mm!important}
+  .tplModern7 .v7ModernProfile .v7Avatar,.tplMinimal7 .v7MinimalIdentity .v7Avatar,.tplDark7 .v7DarkIdentity .v7Avatar,.tplCreator7 .v7CreatorProfile .v7Avatar{width:20mm!important;height:20mm!important}
+  .v7IdentityText h1{font-size:15pt!important}.v7IdentityText p{font-size:7.8pt!important}.v7Location{font-size:6.3pt!important}.v7Bio{font-size:7pt!important;line-height:1.34!important}
+  .v7Section{margin-top:4.2mm!important}.v7SectionTitle{margin-bottom:2mm!important}.v7SectionTitle h2{font-size:7.8pt!important}
+  .v7Socials-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:1.8mm!important}
+  .v7Social:not(.rows),.v7Social.rows{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1.4mm!important;padding:1.8mm!important;break-inside:avoid!important}
   .v7Social.rows .v7SocialTop,.v7Social.rows .v7ContentStyle{grid-column:1/-1!important}
-  .v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{min-height:12.5mm!important;padding:1.2mm .8mm!important;border-radius:1.8mm!important}
-  .v7Stat b,.v7Social.rows .v7Stat b{font-size:8.5pt!important}.v7Stat span{font-size:5.2pt!important;min-height:0!important}.v7ContentStyle{font-size:6.2pt!important;padding-top:1.4mm!important}
-  .v7RateWrap{overflow:visible!important;border:1px solid var(--line)!important}.v7RateTable{display:block!important;width:100%!important}.v7RateHead{display:grid!important}.v7RateRow{display:grid!important;grid-template-columns:21mm 34mm 27mm minmax(0,1fr)!important;border-radius:0!important}.v7RateRow>*{padding:1.5mm 1.7mm!important;font-size:6.5pt!important}.v7RateRow>*::before{display:none!important;content:none!important}.v7RateHead span{font-size:5.5pt!important}.v7RateDescCell{grid-column:auto!important}.v7RateTypeCell,.v7RatePriceCell,.v7RateDescCell{border-top:0!important}.v7RatePriceCell{text-align:left!important}
-  .v7LowerGrid,.v7CreatorBottom{grid-template-columns:1fr 1fr!important;gap:3mm!important;margin-top:4.5mm!important}.v7Contacts{grid-template-columns:1fr 1fr!important;gap:1.5mm!important}.v7Contact{min-height:0!important;padding:1.6mm!important}.v7ContactMark{width:6.5mm!important;height:6.5mm!important}.v7Contact strong{font-size:6.2pt!important}.v7Contact small{font-size:5pt!important}.v7ListBlock{margin-top:3mm!important}.v7ListBlock h3{font-size:7pt!important}.v7ListBlock li{font-size:6.2pt!important;line-height:1.35!important}
-  .v7PublicLink{margin-top:3mm!important;padding-top:1.5mm!important;opacity:.58!important}.v7PublicLink a{font-size:5.5pt!important}
+  .v7Social:not(.rows) .v7Stat,.v7Social.rows .v7Stat{min-height:11.5mm!important;padding:1mm .7mm!important;border-radius:1.6mm!important}
+  .v7Stat b,.v7Social.rows .v7Stat b{font-size:8.2pt!important}.v7Stat span{font-size:5.3pt!important;min-height:0!important}.v7ContentStyle{font-size:6pt!important;padding-top:1.2mm!important}
+  .v7RateWrap{overflow:visible!important;border:1px solid var(--line)!important}.v7RateTable{display:block!important;width:100%!important}.v7RateHead{display:grid!important}.v7RateRow{display:grid!important;grid-template-columns:20mm 33mm 26mm minmax(0,1fr)!important;border-radius:0!important}.v7RateRow>*{padding:1.4mm 1.6mm!important;font-size:6.3pt!important}.v7RateRow>*::before{display:none!important;content:none!important}.v7RateHead span{font-size:5.3pt!important}.v7RateDescCell{grid-column:auto!important}.v7RateTypeCell,.v7RatePriceCell,.v7RateDescCell{border-top:0!important}.v7RatePriceCell{text-align:left!important}
+  .v7LowerGrid,.v7CreatorBottom{grid-template-columns:1fr 1fr!important;gap:2.6mm!important;margin-top:4mm!important}.v7Contacts{grid-template-columns:1fr 1fr!important;gap:1.4mm!important}.v7Contact{min-height:0!important;padding:1.4mm!important}.v7ContactMark{width:6mm!important;height:6mm!important}.v7Contact strong{font-size:6pt!important}.v7Contact small{font-size:4.8pt!important}.v7ListBlock{margin-top:2.7mm!important}.v7ListBlock h3{font-size:6.8pt!important}.v7ListBlock li{font-size:6pt!important;line-height:1.32!important}
+  .v7PublicLink{margin-top:2.6mm!important;padding-top:1.3mm!important;opacity:.5!important}.v7PublicLink a{font-size:5.2pt!important}
   .v7Section,.v7Social,.v7RateWrap,.v7LowerGrid,.v7CreatorBottom,.v7ListBlock{break-inside:avoid-page!important;page-break-inside:avoid!important}
 }

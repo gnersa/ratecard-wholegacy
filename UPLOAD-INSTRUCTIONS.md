@@ -1,9 +1,11 @@
-# Upload v15
+# Upload v16 to GitHub
 
-1. Extract this ZIP.
-2. Replace the repository contents while preserving the folder structure (`src/`, `public/`, etc.).
-3. Commit to `main`.
-4. Vercel will redeploy automatically.
-5. No Neon migration is required.
+Upload the project while preserving its folder structure. Do not flatten files into the repository root.
 
-Important: do not flatten files into the repository root. For example, `HomeClient.tsx` must remain under `src/components/`.
+Important paths include:
+- `src/app/globals.css`
+- `src/components/ratecard-templates.tsx`
+- `src/components/HomeClient.tsx`
+- `public/...`
+
+No Neon migration is required. After commit, let Vercel redeploy automatically.
