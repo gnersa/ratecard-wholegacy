@@ -24,11 +24,12 @@ export async function PUT(request: Request) {
     if (duplicate.length) return NextResponse.json({ error: "Username sudah digunakan." }, { status: 409 });
 
     const theme = ["minimal", "creator", "dark-pro", "editorial"].includes(body.theme) ? body.theme : "minimal";
+    const language = ["id", "en"].includes(body.language) ? body.language : "id";
     const rows = await sql`
       insert into creator_profiles
-        (user_id, username, display_name, bio, category, location, avatar_url, cover_url, contact_email, whatsapp, theme, updated_at)
+        (user_id, username, display_name, bio, category, location, avatar_url, cover_url, contact_email, whatsapp, theme, language, updated_at)
       values
-        (${user.id}, ${username}, ${displayName}, ${String(body.bio || "")}, ${String(body.category || "")}, ${String(body.location || "")}, ${String(body.avatarUrl || "")}, ${String(body.coverUrl || "")}, ${String(body.contactEmail || user.email)}, ${String(body.whatsapp || "")}, ${theme}, now())
+        (${user.id}, ${username}, ${displayName}, ${String(body.bio || "")}, ${String(body.category || "")}, ${String(body.location || "")}, ${String(body.avatarUrl || "")}, ${String(body.coverUrl || "")}, ${String(body.contactEmail || user.email)}, ${String(body.whatsapp || "")}, ${theme}, ${language}, now())
       on conflict (user_id) do update set
         username = excluded.username,
         display_name = excluded.display_name,
@@ -40,6 +41,7 @@ export async function PUT(request: Request) {
         contact_email = excluded.contact_email,
         whatsapp = excluded.whatsapp,
         theme = excluded.theme,
+        language = excluded.language,
         updated_at = now()
       returning *
     `;

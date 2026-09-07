@@ -1,24 +1,23 @@
-# Wholegacy Ratecard v4
+# Wholegacy Ratecard v5
 
-Upgrade dari v3. Tidak perlu membuat database baru.
+GitHub → Vercel → Neon starter for ratecard.wholegacy.com.
 
-## Fitur baru
-- CMS disusun mengikuti struktur rate card: Tentang Account, Rate Kerjasama, Hubungi Saya, Pengalaman Kolaborasi, Syarat & Ketentuan.
-- Followers, engagement rate, average views dalam range minimum-maksimum, content style.
-- Rate: Jenis Konten, Deskripsi, Harga.
-- Kontak email + WhatsApp dengan icon.
-- Pengalaman kolaborasi editable list.
-- Syarat & ketentuan editable list.
-- Theme baru **Editorial Beige**, terinspirasi struktur referensi yang diberikan, dengan layout detail berbeda dari Minimal, Creator, dan Dark Pro.
-- Semua perubahan tampil di Live Preview.
+## v5 changes
+- Fixed avatar/cover upload flow with explicit Vercel Blob token diagnostics and automatic profile save after upload.
+- Replaced embedded live preview with `/preview`, using the exact same renderer as the published creator page.
+- Editorial Beige is now multi-social. It no longer labels the creator as TikTok-only; each social account has its own logo, handle, followers, engagement rate, average-view range and content style.
+- Fixed Add buttons so their text remains visible.
+- Added Indonesian / English CMS and output-language option.
+- Improved desktop and mobile responsive layouts.
 
-## WAJIB sebelum deploy
-Di Neon SQL Editor, jalankan `neon-v4-migration.sql` sekali menggunakan tombol Run.
-
-Setelah migration berhasil, upload/replace project v4 ke GitHub dan commit ke `main`. Vercel akan redeploy otomatis.
-
-Environment variables tetap:
+## Required Vercel environment variables
 - DATABASE_URL
 - AUTH_SECRET
-- NEXT_PUBLIC_SITE_URL
+- NEXT_PUBLIC_SITE_URL=https://ratecard.wholegacy.com
 - BLOB_READ_WRITE_TOKEN
+
+## Database upgrade
+Run `neon-v5-migration.sql` once in Neon SQL Editor before deploying v5.
+
+## Upload note
+If image upload says `BLOB_READ_WRITE_TOKEN belum tersedia`, connect a Vercel Blob store to this exact project, make sure the token exists in Production, then redeploy.
