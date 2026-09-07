@@ -1,23 +1,21 @@
-# Wholegacy Ratecard v5
+# Wholegacy Ratecard v6
 
-GitHub → Vercel → Neon starter for ratecard.wholegacy.com.
+Upgrade dari v5 dengan arsitektur informasi yang konsisten untuk semua template.
 
-## v5 changes
-- Fixed avatar/cover upload flow with explicit Vercel Blob token diagnostics and automatic profile save after upload.
-- Replaced embedded live preview with `/preview`, using the exact same renderer as the published creator page.
-- Editorial Beige is now multi-social. It no longer labels the creator as TikTok-only; each social account has its own logo, handle, followers, engagement rate, average-view range and content style.
-- Fixed Add buttons so their text remains visible.
-- Added Indonesian / English CMS and output-language option.
-- Improved desktop and mobile responsive layouts.
+## Perubahan utama
+- Semua template menampilkan minimum information yang sama: profil creator, semua akun social media + followers/engagement/view range/content style, rate kerja sama, Contact Me, pengalaman kolaborasi, serta syarat & ketentuan.
+- Empat struktur template tetap berbeda tetapi semuanya minimalis, informatif, responsive, dan web/mobile friendly.
+- `editorial` kini tampil sebagai **Modern**, menggantikan gaya beige lama dengan layout netral modern.
+- `creator` kini tampil sebagai **Creator Pro**.
+- Contact Me memiliki direct `mailto:` dan `https://wa.me/...` link.
+- CMS/editor menggunakan font stack `Roboto, Arial, Helvetica, sans-serif` tanpa ketergantungan font eksternal.
+- Tidak membutuhkan migration database baru dari v5.
 
-## Required Vercel environment variables
-- DATABASE_URL
-- AUTH_SECRET
-- NEXT_PUBLIC_SITE_URL=https://ratecard.wholegacy.com
-- BLOB_READ_WRITE_TOKEN
+## Template
+- Modern (`editorial`)
+- Minimal (`minimal`)
+- Creator Pro (`creator`)
+- Dark Pro (`dark-pro`)
 
-## Database upgrade
-Run `neon-v5-migration.sql` once in Neon SQL Editor before deploying v5.
-
-## Upload note
-If image upload says `BLOB_READ_WRITE_TOKEN belum tersedia`, connect a Vercel Blob store to this exact project, make sure the token exists in Production, then redeploy.
+## Deploy
+Replace source repo dengan isi ZIP ini lalu commit ke `main`. Vercel akan auto deploy. Neon v5 schema/migration tetap digunakan.
