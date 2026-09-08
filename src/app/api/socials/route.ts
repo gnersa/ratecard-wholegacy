@@ -30,7 +30,7 @@ export async function PUT(request: Request) {
     const legacyAverage = min && max ? Math.round((min + max) / 2) : Number(item.averageViews || max || min || 0);
     await sql`insert into social_accounts
       (user_id, platform, handle, url, followers, average_views, average_views_min, average_views_max, engagement_rate, content_style, position)
-      values (${user.id}, ${platform}, ${handle}, ${url}, ${Number(item.followers || 0)}, ${legacyAverage}, ${min}, ${max}, ${Number(item.engagementRate || 0)}, ${String(item.contentStyle || "").slice(0,120)}, ${i})`;
+      values (${user.id}, ${platform}, ${handle}, ${url}, ${Number(item.followers || 0)}, ${legacyAverage}, ${min}, ${max}, ${Number(item.engagementRate || 0)}, ${String(item.contentStyle || "").slice(0,100)}, ${i})`;
   }
   return NextResponse.json({ ok: true });
 }

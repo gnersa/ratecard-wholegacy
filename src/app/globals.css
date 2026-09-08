@@ -1160,3 +1160,31 @@ html,body,.dashboard,.sidebar,.dashMain,.cmsEditor,.editorCard,.templateCmsCard,
   @page{size:A4 portrait;margin:8mm}
   .rc172ThemeMount{width:194mm!important}.rc172{width:194mm!important;max-width:194mm!important;margin:0!important;border-radius:0!important;box-shadow:none!important;break-inside:auto!important;page-break-inside:auto!important}.previewPublicShell,.publicV3Shell{width:194mm!important;max-width:194mm!important}.rc172CreamCover{min-height:150mm!important}.rc172MagazineHero{height:105mm!important}.rc172LuxuryHero{height:72mm!important}.rc172LookbookHero{height:62mm!important}.rc172KawaiiCover{height:42mm!important}.rc172SidebarPro{grid-template-columns:52mm 1fr!important}.rc172Social,.rc172Rate,.rc172List,.rc172Contact a{break-inside:avoid!important;page-break-inside:avoid!important}.rc172Social{min-height:0!important}.rc172CreamContent,.rc172LuxuryBody,.rc172MagazineCard,.rc172SidebarPro>main{padding:5mm!important}.rc172MonoGrid>aside,.rc172MonoGrid>main,.rc172BrutalGrid>main,.rc172BrutalGrid>aside{padding:4mm!important}.rc172SocialGrid,.rc172RateGrid,.rc172BentoCards,.rc172BentoRates,.rc172LuxurySocials,.rc172LuxuryRates,.rc172MonoSocials,.rc172MonoRates,.rc172MagazineSocials{gap:2mm!important}.rc172Public{font-size:5pt!important}}
 .rc172RatePlatform{display:inline-flex!important;align-items:center;gap:5px}.rc172RatePlatform em{font-style:normal}.rc172RatePlatform svg{flex:0 0 auto}.rc172ContactIcon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+
+/* ===== v17.3 usability + contrast + responsive CMS corrections ===== */
+.publicUrlBoxCopy{display:block!important}.publicUrlCopyRow{display:flex;align-items:center;gap:10px;margin-top:8px;min-width:0}.publicUrlCopyRow code{min-width:0;flex:1;overflow-wrap:anywhere}.copyUrlBtn{flex:0 0 auto;border:1px solid var(--cms-line);background:#0b0e0c;color:#f4f6f2;border-radius:10px;padding:8px 12px;font:700 11px/1 var(--ui-font);cursor:pointer}.copyUrlBtn:hover{border-color:var(--cms-accent);color:var(--cms-accent)}
+
+/* Let content determine card height instead of forcing oversized panels. */
+.rc172Social,.rc172Rate{min-height:0!important;height:auto!important}.rc172Social>p{margin-top:10px!important;padding-top:0!important}.rc172SocialGrid,.rc172RateGrid,.rc172BentoCards,.rc172BentoRates,.rc172LuxurySocials,.rc172LuxuryRates,.rc172MonoSocials,.rc172MonoRates,.rc172BrutalSocials,.rc172BrutalRates,.rc172MagazineSocials{align-items:start}.rc172Rate>p,.rc172Social>p,.rc172ListRow p,.rc172Contact b,.rc172CreamIntro p,.rc172LookbookIntro p,.rc172AuraProfile p,.rc172LuxuryBio,.rc172MagazineAbout p,.rc172SidebarPro p{overflow-wrap:anywhere;word-break:break-word}.rc172Contact a{height:auto!important;min-height:0!important}.rc172Contact b{color:var(--text);line-height:1.25}
+
+/* Explicit contrast for accent-backed contact panels, especially Pastel Lookbook. */
+.rc172LookbookContact .rc172Contact a{background:rgba(255,255,255,.16)!important;border-color:rgba(255,255,255,.34)!important;color:#fff!important}.rc172LookbookContact .rc172Contact small,.rc172LookbookContact .rc172Contact b{color:#fff!important}.rc172LookbookContact .rc172ContactIcon{background:#fff!important;color:var(--accent)!important}.rc172LookbookContact .rc172List h3,.rc172LookbookContact .rc172ListRow p,.rc172LookbookContact .rc172ListRow>span{color:#fff!important}.rc172CreamContact .rc172Contact b{color:#fff!important}.rc172LuxuryContact .rc172Contact b{color:#111!important}
+
+/* Hide empty legacy Wholegacy creator badges/slots without changing layout semantics. */
+.rc172CreamTop span:last-child:empty,.rc172MonoTop span:last-child:empty,.rc172AuraTop span:last-child:empty,.rc172LuxuryTop span:last-child:empty,.rc172KawaiiTop span:last-child:empty,.rc172SidebarTop span:last-child:empty,.rc172MagazineTop span:last-child:empty,.rc172LookbookBrand:empty,.rc172BrutalFooter:empty,.rc172LuxuryContact>span:empty,.rc172MagazineCTA>span:empty{display:none!important}
+
+/* Final mobile CMS dark-theme authority. */
+@media(max-width:700px){
+  .dashboard{background:var(--cms-bg)!important;color:var(--cms-text)!important;padding-bottom:84px!important}
+  .mobileCommandBar{background:rgba(9,11,10,.96)!important;border-bottom:1px solid var(--cms-line)!important;backdrop-filter:blur(14px)!important}
+  .cmsV17StepSelect small{color:var(--cms-muted)!important}.cmsV17StepSelect select{background:#0b0e0c!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+  .dashMain,.templateCmsCard,.editorCard,.itemEditor,.inlineList,.cmsV17ControlCard,.cmsV17PreviewPanel,.publicUrlBox,.dashCard{background:var(--cms-surface-2)!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+  .cmsV17PaletteBtn,.cmsV17PreviewModes,.field input,.field textarea,.field select,.avgViewsInputs input{background:#0b0e0c!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+  .cmsWizardNav,.cmsV17FinalActions{background:rgba(15,18,16,.97)!important;border-color:var(--cms-line)!important;box-shadow:0 -12px 30px rgba(0,0,0,.22)!important}
+  .cmsV17PreviewPanel{padding:10px!important}.cmsV17PreviewToolbar{flex-wrap:wrap}.cmsV17PreviewModes{width:100%;display:grid!important;grid-template-columns:1fr 1fr}.cmsV17PreviewModes button{width:100%}
+  .publicUrlCopyRow{align-items:stretch}.copyUrlBtn{padding-inline:14px}
+  .templateCmsCard{padding:16px!important}.itemEditor{padding:14px!important}.inlineList{display:block!important}.inlineList .textButton{margin:10px 0 0!important}
+  .cmsV17FinalActions{grid-template-columns:1fr!important;padding:10px!important}.cmsV17FinalActions .button{width:100%!important}
+}
+@media(max-width:430px){.avgViewsInputs{grid-template-columns:1fr 1fr!important;gap:8px}.avgViewsInputs input{padding:11px 10px!important}.publicUrlCopyRow{display:grid;grid-template-columns:1fr}.copyUrlBtn{width:100%}}

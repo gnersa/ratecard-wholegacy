@@ -4,3 +4,6 @@
 2. Replace the repository files/folders with the contents of this package while preserving the folder structure.
 3. Do not flatten `src/` or `public/` into the repository root.
 4. Commit to GitHub and let Vercel deploy.
+
+## v17.3
+Replace the repository files with this package and deploy. No new Neon migration is required beyond the existing v17 migration.

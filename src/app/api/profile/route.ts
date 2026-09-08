@@ -31,7 +31,7 @@ export async function PUT(request: Request) {
       insert into creator_profiles
         (user_id, username, display_name, bio, category, location, avatar_url, cover_url, contact_email, whatsapp, theme, color_pattern, language, updated_at)
       values
-        (${user.id}, ${username}, ${displayName}, ${String(body.bio || "").slice(0,500)}, ${String(body.category || "").slice(0,100)}, ${String(body.location || "").slice(0,100)}, ${String(body.avatarUrl || "")}, ${String(body.coverUrl || "")}, ${String(body.contactEmail || user.email)}, ${String(body.whatsapp || "")}, ${theme}, ${colorPattern}, ${language}, now())
+        (${user.id}, ${username}, ${displayName}, ${String(body.bio || "").slice(0,420)}, ${String(body.category || "").slice(0,100)}, ${String(body.location || "").slice(0,100)}, ${String(body.avatarUrl || "")}, ${String(body.coverUrl || "")}, ${String(body.contactEmail || user.email)}, ${String(body.whatsapp || "")}, ${theme}, ${colorPattern}, ${language}, now())
       on conflict (user_id) do update set
         username = excluded.username,
         display_name = excluded.display_name,

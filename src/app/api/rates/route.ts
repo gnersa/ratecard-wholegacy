@@ -19,7 +19,7 @@ export async function PUT(request: Request) {
     const item = items[i];
     if (!item.platform || !item.serviceName) continue;
     await sql`insert into rate_items (user_id, platform, service_name, price, currency, description, position)
-      values (${user.id}, ${String(item.platform)}, ${String(item.serviceName).slice(0,80)}, ${Number(item.price || 0)}, ${String(item.currency || "IDR")}, ${String(item.description || "").slice(0,240)}, ${i})`;
+      values (${user.id}, ${String(item.platform)}, ${String(item.serviceName).slice(0,70)}, ${Number(item.price || 0)}, ${String(item.currency || "IDR")}, ${String(item.description || "").slice(0,200)}, ${i})`;
   }
   return NextResponse.json({ ok: true });
 }
