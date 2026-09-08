@@ -49,8 +49,35 @@ export async function PUT(request: Request) {
       returning *
     `;
     return NextResponse.json({ ok: true, profile: rows[0] });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Gagal menyimpan profile." }, { status: 500 });
+  } catch (error: any) {
+    console.error("[api/profile] save failed", error);
+    const code = String(error?.code || "");
+    const message = String(error?.message || "");
+
+    if (code === "42703" || /column .* does not exist/i.test(message)) {
+      return NextResponse.json(
+        { error: "Database belum menggunakan schema terbaru. Jalankan neon-v17.5.2-fix.sql di Neon SQL Editor, lalu coba Save & Publish lagi.", code: "SCHEMA_OUTDATED" },
+        { status: 500 }
+      );
+    }
+
+    if (code === "23514" || /creator_profiles_theme_check/i.test(message)) {
+      return NextResponse.json(
+        { error: "Pilihan desain terbaru belum diizinkan oleh constraint database. Jalankan neon-v17.5.2-fix.sql di Neon SQL Editor, lalu coba lagi.", code: "THEME_CONSTRAINT_OUTDATED" },
+        { status: 500 }
+      );
+    }
+
+    if (code === "22001") {
+      return NextResponse.json(
+        { error: "Ada data profil yang melebihi kapasitas kolom database. Jalankan neon-v17.5.2-fix.sql lalu coba lagi.", code: "COLUMN_TOO_SHORT" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      { error: "Gagal menyimpan profil. Silakan coba lagi. Jika tetap gagal, periksa Vercel Function log untuk [api/profile].", code: code || "PROFILE_SAVE_FAILED" },
+      { status: 500 }
+    );
   }
 }
