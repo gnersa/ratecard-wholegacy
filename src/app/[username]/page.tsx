@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { sql } from "@/lib/db";
 import RatecardTemplates from "@/components/ratecard-templates";
 import PrintDownloadButton from "@/components/PrintDownloadButton";
+import A4PrintFit from "@/components/A4PrintFit";
 
 async function getCreator(username: string) {
   const profiles = await sql`select * from creator_profiles where lower(username) = ${username.toLowerCase()} and published = true limit 1`;
@@ -14,7 +15,7 @@ async function getCreator(username: string) {
   const terms = await sql`select * from terms_conditions where user_id = ${p.user_id} order by position asc, created_at asc`;
   return {
     profile: p,
-    socials: socials.map((s:any)=>({platform:s.platform,handle:s.handle,url:s.url,followers:Number(s.followers||0),averageViews:Number(s.average_views||0),averageViewsMin:Number(s.average_views_min||0),averageViewsMax:Number(s.average_views_max||0),engagementRate:Number(s.engagement_rate||0),contentStyle:s.content_style||""})),
+    socials: socials.map((s:any)=>({platform:s.platform,handle:s.handle,url:s.url,followers:Number(s.followers||0),averageViews:Number(s.average_views||s.average_views_max||s.average_views_min||0),engagementRate:Number(s.engagement_rate||0),contentStyle:s.content_style||""})),
     rates: rates.map((r:any)=>({platform:r.platform,serviceName:r.service_name,price:Number(r.price||0),currency:r.currency,description:r.description})),
     experiences: experiences.map((x:any)=>({label:x.label})),
     terms: terms.map((x:any)=>({content:x.content}))
@@ -34,5 +35,5 @@ export async function generateMetadata({ params }: { params: Promise<{ username:
 export default async function CreatorPage({ params }: { params: Promise<{ username: string }> }) {
   const { username } = await params; const data = await getCreator(username); if(!data) notFound();
   const p:any=data.profile;
-  return <main className="publicV3"><div className="publicV3Shell"><div className="publicRateActions"><PrintDownloadButton /></div><RatecardTemplates profile={p} socials={data.socials} rates={data.rates} experiences={data.experiences} terms={data.terms} theme={p.theme}/></div></main>;
+  return <main className="publicV3"><A4PrintFit/><div className="publicV3Shell"><div className="publicRateActions"><PrintDownloadButton /></div><RatecardTemplates profile={p} socials={data.socials} rates={data.rates} experiences={data.experiences} terms={data.terms} theme={p.theme}/></div></main>;
 }

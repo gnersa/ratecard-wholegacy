@@ -1188,3 +1188,40 @@ html,body,.dashboard,.sidebar,.dashMain,.cmsEditor,.editorCard,.templateCmsCard,
   .cmsV17FinalActions{grid-template-columns:1fr!important;padding:10px!important}.cmsV17FinalActions .button{width:100%!important}
 }
 @media(max-width:430px){.avgViewsInputs{grid-template-columns:1fr 1fr!important;gap:8px}.avgViewsInputs input{padding:11px 10px!important}.publicUrlCopyRow{display:grid;grid-template-columns:1fr}.copyUrlBtn{width:100%}}
+
+/* ===== v17.4 CMS field alignment, single Views metric, mobile polish, A4 fit ===== */
+.formGrid,.socialAccountGrid{align-items:start}
+.socialAccountGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.formGrid>.field,.socialAccountGrid>.field{display:grid!important;grid-template-rows:22px 52px auto;align-content:start;gap:8px!important;margin-top:18px!important;min-width:0}
+.formGrid>.field>span,.socialAccountGrid>.field>span{display:flex;align-items:flex-end;min-height:22px;color:#c4cac3!important;font-size:13px;line-height:1.25}
+.formGrid>.field>input,.formGrid>.field>select,.socialAccountGrid>.field>input,.socialAccountGrid>.field>select{height:52px!important;min-height:52px!important;max-height:52px!important;box-sizing:border-box!important;padding:0 14px!important;line-height:1.2!important;margin:0!important}
+.formGrid>.field select,.socialAccountGrid>.field select{appearance:auto!important}
+.charFieldMeta{display:flex;justify-content:space-between;gap:10px;min-height:18px;margin-top:0!important;color:var(--cms-muted)}
+.charFieldMeta small:first-child{min-width:0;overflow-wrap:anywhere}.charFieldMeta small:last-child{white-space:nowrap;margin-left:auto}
+.socialAccountGrid .socialAutoLink{display:block;min-height:18px;margin-top:0!important;color:var(--cms-muted)!important;line-height:1.35;overflow-wrap:anywhere}
+.socialAccountGrid+.textButton{margin-top:12px}
+
+/* The language selector is global only; Design no longer carries a duplicate selector. */
+.cmsV17Controls>.cmsV17ControlCard:last-child:has(.langSelect){display:none!important}
+
+/* Keep every CMS surface on the same dark visual system, including mobile. */
+@media(max-width:700px){
+  .socialAccountGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px!important}
+  .formGrid>.field,.socialAccountGrid>.field{grid-template-rows:20px 48px auto;gap:7px!important;margin-top:14px!important}
+  .formGrid>.field>input,.formGrid>.field>select,.socialAccountGrid>.field>input,.socialAccountGrid>.field>select{height:48px!important;min-height:48px!important;max-height:48px!important;padding:0 11px!important}
+  .templateCmsCard,.editorCard,.itemEditor,.cmsV17ControlCard,.cmsV17PreviewPanel,.publicUrlBox,.dashCard,.uploadBox,.inlineList{background:var(--cms-surface-2)!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+  .field input,.field textarea,.field select,.socialAccountGrid input,.socialAccountGrid select,.cmsV17PaletteBtn,.cmsV17PreviewModes,.cmsV17StepSelect select{background:#0b0e0c!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+}
+@media(max-width:350px){.socialAccountGrid{grid-template-columns:1fr}}
+
+/* Print every design as a single fitted A4 portrait sheet. A4PrintFit measures the live design and supplies the zoom. */
+@media print{
+  @page{size:A4 portrait;margin:8mm}
+  html,body{width:210mm!important;min-width:0!important;margin:0!important;padding:0!important;background:#fff!important}
+  .previewToolbar,.publicRateActions,.printPdfButton,.cmsV172ViewportMeta{display:none!important}
+  .previewPage,.publicV3,.cmsLivePreviewDocument{width:194mm!important;min-height:0!important;margin:0!important;padding:0!important;background:#fff!important;overflow:visible!important}
+  .previewPublicShell,.publicV3Shell{width:auto!important;max-width:none!important;margin:0!important;padding:0!important}
+  .rc172ThemeMount{display:block!important;width:var(--a4-source-width,1240px)!important;max-width:none!important;margin:0!important;padding:0!important;zoom:var(--a4-fit-scale,.59)!important;transform:none!important;transform-origin:top left!important}
+  .rc172ThemeMount .rc172{width:100%!important;max-width:none!important;margin:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+  .rc172Social,.rc172Rate,.rc172List,.rc172Contact a{break-inside:avoid!important;page-break-inside:avoid!important}
+}

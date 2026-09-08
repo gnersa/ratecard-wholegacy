@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useState} from "react";
 import RatecardTemplates from "@/components/ratecard-templates";
+import A4PrintFit from "@/components/A4PrintFit";
 
 type PreviewPayload={profile:any;socials:any[];rates:any[];experiences:any[];terms:any[];theme?:string;colorPattern?:string};
 
@@ -17,5 +18,5 @@ export default function LivePreviewClient(){
     return()=>window.removeEventListener("message",onMessage);
   },[]);
   if(!data)return <main className="cmsLivePreviewLoading">Memuat live preview…</main>;
-  return <main className="cmsLivePreviewDocument"><RatecardTemplates profile={data.profile} socials={data.socials||[]} rates={data.rates||[]} experiences={data.experiences||[]} terms={data.terms||[]} theme={data.theme} colorPattern={data.colorPattern}/></main>;
+  return <main className="cmsLivePreviewDocument"><A4PrintFit/><RatecardTemplates profile={data.profile} socials={data.socials||[]} rates={data.rates||[]} experiences={data.experiences||[]} terms={data.terms||[]} theme={data.theme} colorPattern={data.colorPattern}/></main>;
 }

@@ -7,3 +7,7 @@
 
 ## v17.3
 Replace the repository files with this package and deploy. No new Neon migration is required beyond the existing v17 migration.
+
+## v17.4
+
+No new Neon migration is required. Replace the project files with the v17.4 package and deploy. Keep the previously applied `neon-v17-migration.sql` schema.

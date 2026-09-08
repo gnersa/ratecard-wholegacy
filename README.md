@@ -18,3 +18,16 @@ Major template correction based on the supplied 10-design HTML reference.
 - Refined product character limits: Bio 420, Content Style 100, Content Type 70, Rate Description 200, Collaboration Experience 320/item, Terms 420/item. API limits match the CMS.
 - Added final mobile CMS dark-theme overrides so sticky navigation, controls, palettes, preview panel, fields, and action areas remain visually consistent.
 - No new Neon migration is required.
+
+## v17.4 corrections
+
+- Removes the CMS `Unsaved changes` status badge/text from the editor header while keeping local draft behavior internally.
+- Removes the duplicate Language selector from Design. The global top-right language selector remains authoritative.
+- Renames `Pengalaman Kolaborasi / Collaboration Experience` to `Kemitraan / Partnerships` across CMS and public templates.
+- Simplifies social Average Views into one `Views` field. Public templates render it approximately, e.g. `±2 rb` / `±2K` or `±150`.
+- About Accounts social editor is a strict 2 × 3 grid: Platform/Handle, Followers/Engagement, Views/Content Style.
+- Normalizes text/select/number field heights and alignment across CMS rate/account grids.
+- Print / Download prints the current live draft directly from the desktop preview and applies dynamic A4 portrait fitting.
+- Save & Publish saves all sections including the latest theme + palette, publishes, then opens the creator URL in a browser tab.
+- Adds stronger final mobile CMS dark-surface overrides.
+- No new Neon migration is required after v17 migration.
