@@ -1,7 +1,6 @@
-# Upload v17
+# Upload v17.2
 
-1. Run `neon-v17-migration.sql` once in Neon SQL Editor.
-2. Upload/replace the repository using the folder structure exactly as provided.
-3. Keep `src/` and `public/` nested. Do not flatten their files into the GitHub repository root.
-4. Let Vercel redeploy automatically.
-5. Open CMS > Design and verify theme, palette, Webview/Mobile preview, Print / Download, and Save & Publish.
+1. Keep the existing Neon v17 migration already applied. No new migration is needed for v17.2.
+2. Replace the repository files/folders with the contents of this package while preserving the folder structure.
+3. Do not flatten `src/` or `public/` into the repository root.
+4. Commit to GitHub and let Vercel deploy.
