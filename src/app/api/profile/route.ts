@@ -23,13 +23,15 @@ export async function PUT(request: Request) {
     const duplicate = await sql`select user_id from creator_profiles where lower(username) = ${username} and user_id <> ${user.id} limit 1`;
     if (duplicate.length) return NextResponse.json({ error: "Username sudah digunakan." }, { status: 409 });
 
-    const theme = ["minimal", "creator", "dark-pro", "editorial"].includes(body.theme) ? body.theme : "minimal";
+    const allowedThemes = ["cream-editorial","dark-bento-neon","pastel-lookbook","minimal-mono","aura-glass","brutalist-paper","luxury-gold","kawaii-dashboard","modern-sidebar-pro","magazine-cover-hero","minimal","creator","dark-pro","editorial"];
+    const theme = allowedThemes.includes(body.theme) ? body.theme : "cream-editorial";
+    const colorPattern = String(body.colorPattern || "").slice(0,60);
     const language = ["id", "en"].includes(body.language) ? body.language : "id";
     const rows = await sql`
       insert into creator_profiles
-        (user_id, username, display_name, bio, category, location, avatar_url, cover_url, contact_email, whatsapp, theme, language, updated_at)
+        (user_id, username, display_name, bio, category, location, avatar_url, cover_url, contact_email, whatsapp, theme, color_pattern, language, updated_at)
       values
-        (${user.id}, ${username}, ${displayName}, ${String(body.bio || "")}, ${String(body.category || "")}, ${String(body.location || "")}, ${String(body.avatarUrl || "")}, ${String(body.coverUrl || "")}, ${String(body.contactEmail || user.email)}, ${String(body.whatsapp || "")}, ${theme}, ${language}, now())
+        (${user.id}, ${username}, ${displayName}, ${String(body.bio || "").slice(0,500)}, ${String(body.category || "").slice(0,100)}, ${String(body.location || "").slice(0,100)}, ${String(body.avatarUrl || "")}, ${String(body.coverUrl || "")}, ${String(body.contactEmail || user.email)}, ${String(body.whatsapp || "")}, ${theme}, ${colorPattern}, ${language}, now())
       on conflict (user_id) do update set
         username = excluded.username,
         display_name = excluded.display_name,
@@ -41,6 +43,7 @@ export async function PUT(request: Request) {
         contact_email = excluded.contact_email,
         whatsapp = excluded.whatsapp,
         theme = excluded.theme,
+        color_pattern = excluded.color_pattern,
         language = excluded.language,
         updated_at = now()
       returning *

@@ -9,7 +9,7 @@ export async function PUT(request: Request) {
   const items = Array.isArray(body.items) ? body.items.slice(0, 20) : [];
   await sql`delete from collaboration_experiences where user_id = ${user.id}`;
   for (let i = 0; i < items.length; i++) {
-    const label = String(items[i]?.label || "").trim();
+    const label = String(items[i]?.label || "").trim().slice(0,500);
     if (!label) continue;
     await sql`insert into collaboration_experiences (user_id, label, position) values (${user.id}, ${label}, ${i})`;
   }

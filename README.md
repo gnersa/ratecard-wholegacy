@@ -1,18 +1,31 @@
-# Wholegacy Ratecard v16
+# Wholegacy Ratecard v17
 
-Visual normalization release after auditing the rendered v15 previews for Modern, Minimalist, Creator Pro, and Dark Pro.
+Major CMS Design upgrade based on the supplied 10-theme HTML reference.
 
 ## Highlights
-- Rebalanced hero height, avatar size, identity overlap, and bio spacing independently for all four themes.
-- Modern is lighter and more editorial; Minimalist and Dark Pro have tighter identity-to-bio relationships; Creator Pro is less poster-heavy.
-- Unified typography and spacing scale across desktop, tablet, mobile, and A4 print.
-- Social accounts remain 2 columns on desktop and 1 column on mobile, with 3 equal metric cells per account.
-- Metric values are visually prioritized over labels, and mobile labels never drop below 9px.
-- Minimalist keeps a restrained row-based social layout.
-- Creator Pro metric tiles are visually flatter to avoid nested-card heaviness.
-- Collaboration rates use a desktop table and stacked mobile cards.
-- Contact cards collapse to one column only on very narrow phones (<=380px).
-- Public URL footer is more subtle.
-- One final A4 print system is retained for consistent browser Save-as-PDF output.
+- 10 selectable ratecard designs.
+- 5 color patterns per design. Four are adopted from the supplied reference and one additional theme-aware palette is included to satisfy the minimum 5-pattern requirement.
+- Live responsive preview inside CMS: Webview and Mobile.
+- Design is the final CMS step: Print / Download and Save & Publish replace Next.
+- Social profile URL input removed. Direct URL is generated from platform + handle.
+- Added Threads, Twitch and LinkedIn platform/icon support.
+- Average Views grouped as Min / Max in one row.
+- Character guidance/counters for descriptive fields.
+- Backend validation for text limits and view range.
+- A4 portrait print route with auto-open print dialog.
+- Mobile CMS uses sticky step selector and sticky navigation.
 
-No Neon migration is required for v16.
+## Required migration
+Run `neon-v17-migration.sql` once in Neon SQL Editor before deploying v17.
+
+## Theme list
+1. Cream Editorial
+2. Dark Bento Neon
+3. Pastel Lookbook
+4. Minimal Mono
+5. Aura Glass
+6. Brutalist Paper
+7. Luxury Gold
+8. Kawaii Dashboard
+9. Modern Sidebar Pro
+10. Magazine Cover Hero

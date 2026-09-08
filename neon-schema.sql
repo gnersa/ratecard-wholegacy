@@ -26,11 +26,12 @@ create table if not exists creator_profiles (
   cover_url text not null default '',
   contact_email varchar(255) not null default '',
   whatsapp varchar(50) not null default '',
-  theme varchar(30) not null default 'minimal',
+  theme varchar(30) not null default 'cream-editorial',
+  color_pattern varchar(60) not null default '',
   published boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  constraint creator_profiles_theme_check check (theme in ('minimal','creator','dark-pro'))
+  constraint creator_profiles_theme_check check (theme in ('cream-editorial','dark-bento-neon','pastel-lookbook','minimal-mono','aura-glass','brutalist-paper','luxury-gold','kawaii-dashboard','modern-sidebar-pro','magazine-cover-hero','minimal','creator','dark-pro','editorial'))
 );
 create unique index if not exists creator_profiles_username_lower_idx on creator_profiles (lower(username));
 
