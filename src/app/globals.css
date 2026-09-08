@@ -1072,3 +1072,42 @@ html,body,.dashboard,.sidebar,.dashMain,.cmsEditor,.editorCard,.templateCmsCard,
 @media(max-width:820px){.cmsV17DesignGrid{grid-template-columns:1fr}.cmsV17PreviewPanel{position:static}.cmsV17Viewport{height:520px}.cmsV17Canvas.desktop{transform:scale(.35);margin-bottom:-65%}.cmsV17Canvas.mobile{transform:scale(.72);margin-bottom:-22%}}
 @media(max-width:700px){.sidebar{display:none!important}.dashboardGrid{display:block!important}.dashMain{width:100%!important}.mobileCommandBar{display:block!important;position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid #e5e7eb;padding:9px 12px}.mobileCommandBar>.langSelect,.mobileCommandBar>.previewBtn,.mobileCommandBar>.primary{display:none!important}.cmsV17StepSelect{display:flex;align-items:center;justify-content:space-between;gap:10px}.cmsV17StepSelect select{flex:1;min-width:0;border:1px solid #ddd;border-radius:10px;padding:9px;background:#fff}.cmsV17StepSelect small{white-space:nowrap;color:#777}.cmsWizardNav{position:sticky;bottom:0;z-index:25;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid #eee;padding:10px 12px;margin:18px -12px -12px!important}.cmsV17FinalActions{position:sticky;bottom:0;z-index:26;background:rgba(255,255,255,.97);padding:10px 0;display:grid;grid-template-columns:1fr 1fr}.cmsV17FinalActions .button{min-width:0}.cmsV17PreviewPanel{padding:8px}.cmsV17Viewport{height:470px;padding:8px}.cmsV17Canvas.desktop{transform:scale(.30);margin-bottom:-70%}.cmsV17Canvas.mobile{transform:scale(.65);margin-bottom:-30%}.avgViewsInputs{grid-template-columns:1fr 1fr}}
 .fieldError{display:block;color:#b42318;font-size:10px;margin-top:5px}.inlineList>.field{flex:1;min-width:0}
+
+/* ===== v17.1 CMS field + true viewport preview patch ===== */
+.avgViewsGroup{grid-column:auto!important;margin-top:18px;min-width:0}
+.avgViewsGroup>span{display:block;font-size:13px!important;font-weight:400!important;color:#c4cac3!important;margin-bottom:8px!important}
+.avgViewsInputs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.avgViewsInputs input{width:100%;min-width:0;background:#0b0e0c!important;border:1px solid var(--cms-line)!important;color:var(--cms-text)!important;border-radius:12px;padding:13px 14px;outline:none;box-shadow:none!important;font:inherit}
+.avgViewsInputs input:focus{border-color:#4b584c!important;outline:none!important}
+.avgViewsInputs input::placeholder{color:#70766f}
+
+.cmsV17ControlCard{background:#101310!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+.cmsV17ControlCard h3,.cmsV17ControlCard .field>span{color:#c4cac3!important}
+.cmsV17PaletteBtn{background:#0b0e0c!important;border-color:var(--cms-line)!important;color:var(--cms-text)!important}
+.cmsV17PaletteBtn.selected{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)!important}
+.cmsV17PreviewPanel{background:#101310!important;border-color:var(--cms-line)!important}
+.cmsV17PreviewToolbar strong{color:var(--cms-text)!important}
+.cmsV17PreviewModes{background:#0b0e0c!important;border-color:var(--cms-line)!important}
+.cmsV17PreviewModes button{color:#c4cac3!important;white-space:nowrap}
+.cmsV17PreviewModes button.active{background:var(--accent)!important;color:#071000!important}
+.cmsV17Viewport{height:auto!important;overflow:hidden!important;background:#050706!important;border:1px solid var(--cms-line)!important;border-radius:14px!important;padding:0!important;display:block!important;position:relative;margin:0 auto;box-shadow:0 18px 45px rgba(0,0,0,.22)}
+.cmsV17Viewport.desktop{width:100%;aspect-ratio:16/9}
+.cmsV17Viewport.mobile{width:min(100%,390px);aspect-ratio:9/16;border-radius:24px!important;border-width:7px!important}
+.cmsV17Viewport iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;display:block}
+.cmsLivePreviewDocument{min-height:100vh;margin:0;padding:0;background:#fff}
+.cmsLivePreviewDocument>.rc17{width:100%;min-height:100vh;margin:0!important;box-shadow:none!important;border-radius:0!important}
+.cmsLivePreviewLoading{min-height:100vh;display:grid;place-items:center;background:#111;color:#bbb;font:500 14px/1.4 Inter,Arial,sans-serif}
+
+@media(max-width:820px){
+  .cmsV17Viewport.desktop{width:100%;aspect-ratio:16/9}
+  .cmsV17Viewport.mobile{width:min(100%,360px);aspect-ratio:9/16}
+}
+@media(max-width:700px){
+  .avgViewsGroup{grid-column:1/-1!important}
+  .avgViewsInputs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+  .cmsV17PreviewToolbar{align-items:flex-start;flex-direction:column}
+  .cmsV17PreviewModes{width:100%}
+  .cmsV17PreviewModes button{flex:1}
+  .cmsV17Viewport.desktop{aspect-ratio:16/9}
+  .cmsV17Viewport.mobile{width:min(100%,340px);aspect-ratio:9/16}
+}
